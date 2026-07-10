@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>クイズアプリ</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'Noto Sans JP', sans-serif; background: #f0f4f8; color: #333; min-height: 100vh; }
+.header { background: linear-gradient(135deg, #667eea, #764ba2); color: white; padding: 14px 20px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; box-shadow: 0 2px 10px rgba(0,0,0,0.2); }
+.header h1 { font-size: 1.1rem; }
+.header-right { display: flex; align-items: center; gap: 10px; font-size: 0.85rem; }
+.header-right img { width: 30px; height: 30px; border-radius: 50%; border: 2px solid white; }
+.btn-logout { background: rgba(255,255,255,0.2); color: white; border: none; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.8rem; }
+.container { max-width: 800px; margin: 0 auto; padding: 20px 16px; }
+.card { background: white; border-radius: 12px; padding: 24px; margin-bottom: 20px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+.card h2 { font-size: 1.05rem; color: #444; margin-bottom: 16px; padding-bottom: 10px; border-bottom: 2px solid #e2e8f0; }
+.btn { padding: 10px 20px; border: none; border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 0.9rem; font-weight: 500; transition: all 0.2s; }
+.btn-primary { background: #667eea; color: white; }
+.btn-primary:hover { background: #5a6fd6; }
+.btn-success { background: #48bb78; color: white; }
+.btn-danger { background: #fc8181; color: white; }
+.btn-secondary { background: #e2e8f0; color: #555; }
+.btn-warning { background: #f6ad55; color: white; }
+.btn-sm { padding: 6px 12px; font-size: 0.82rem; }
+label { display: block; font-size: 0.88rem; color: #666; margin-bottom: 5px; font-weight: 500; }
+input[type=text], input[type=number], select { width: 100%; padding: 9px 12px; border: 1.5px solid #e2e8f0; border-radius: 8px; font-family: inherit; font-size: 0.92rem; }
+input:focus, select:focus { outline: none; border-color: #667eea; }
+.form-row { margin-bottom: 14px; }
+.row2 { display: flex; gap: 12px; flex-wrap: wrap; }
+.row2 .form-row { flex: 1; min-width: 140px; }
+.file-item { display: flex; align-items: center; justify-content: space-between; padding: 12px 14px; background: #f8f9ff; border-radius: 8px; border: 1px solid #e2e8f0; margin-bottom: 8px; cursor: pointer; transition: all 0.2s; }
+.file-item:hover, .file-item.active { background: #eef2ff; border-color: #667eea; }
+.file-item-name { font-size: 0.95rem; font-weight: 500; }
+.file-item-meta { font-size: 0.78rem; color: #888; margin-top: 2px; }
+.badge { display: inline-block; padding: 2px 8px; border-radius: 20px; font-size: 0.72rem; margin-left: 6px; }
+.badge-public { background: #eef2ff; color: #667eea; }
+.checkbox-group { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 4px; }
+.chk-label { display: flex; align-items: center; gap: 5px; padding: 7px 13px; border: 1.5px solid #e2e8f0; border-radius: 8px; cursor: pointer; font-size: 0.88rem; background: white; transition: all 0.2s; user-select: none; }
+.chk-label.checked { background: #eef2ff; border-color: #667eea; color: #667eea; font-weight: 500; }
+.chk-label input { display: none; }
+.tabs { display: flex; gap: 8px; margin-bottom: 20px; flex-wrap: wrap; }
+.tab-btn { padding: 8px 18px; border-radius: 20px; border: 2px solid #e2e8f0; background: white; color: #666; cursor: pointer; font-family: inherit; font-size: 0.88rem; font-weight: 500; transition: all 0.2s; }
+.tab-btn.active { border-color: #667eea; background: #667eea; color: white; }
+.section { display: none; }
+.section.active { display: block; }
+.quiz-q {
+  font-size: 1.1rem;
+  font-weight: 500;
+  line-height: 1.7;
+  padding: 18px;
+  background: #f8f9ff;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border-left: 4px solid #667eea;
+  white-space: pre-line;
+}
+
+.quiz-a {
+  font-size: 1rem;
+  line-height: 1.7;
+  padding: 14px 18px;
+  background: #f0fff4;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  border-left: 4px solid #48bb78;
+  display: none;
+  white-space: pre-line;
+}
+.quiz-a.show { display: block; }
+.progress-bar { width: 100%; height: 6px; background: #e2e8f0; border-radius: 3px; margin-bottom: 14px; }
+.progress-fill { height: 100%; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 3px; transition: width 0.3s; }
+.judge-btns { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
+.judge-btns .btn { padding: 12px 30px; font-size: 0.95rem; }
+.score-wrap { text-align: center; padding: 20px; }
+.score-num { font-size: 3rem; font-weight: 700; color: #667eea; }
+.score-label { color: #888; font-size: 0.88rem; margin-top: 4px; }
+.wrong-list { list-style: none; margin-top: 16px; }
+.wrong-item { padding: 12px 14px; border-left: 3px solid #fc8181; background: #fff5f5; border-radius: 0 8px 8px 0; margin-bottom: 8px; }
+.wrong-q { font-weight: 500; font-size: 0.92rem; margin-bottom: 4px; }
+.wrong-a { font-size: 0.85rem; color: #666; }
+.upload-zone { border: 2px dashed #cbd5e0; border-radius: 10px; padding: 28px; text-align: center; cursor: pointer; color: #888; transition: all 0.2s; }
+.upload-zone:hover { border-color: #667eea; background: #f8f9ff; color: #667eea; }
+.upload-icon { font-size: 2rem; margin-bottom: 8px; }
+.alert { padding: 10px 14px; border-radius: 8px; margin-bottom: 14px; font-size: 0.88rem; }
+.alert-info { background: #ebf8ff; color: #2b6cb0; border: 1px solid #bee3f8; }
+.alert-success { background: #f0fff4; color: #276749; border: 1px solid #c6f6d5; }
+.btn-group { display: flex; gap: 10px; flex-wrap: wrap; }
+.pdf-options { background: #f8f9ff; border-radius: 8px; padding: 16px; margin-bottom: 16px; }
+.empty { text-align: center; padding: 32px; color: #aaa; }
+.empty-icon { font-size: 2.5rem; margin-bottom: 10px; }
+@media print {
+  .no-print { display: none !important; }
+  body { background: white; }
+  .card { box-shadow: none; border: 1px solid #eee; page-break-inside: avoid; }
+  * { word-break: break-all; overflow-wrap: break-word; }
+}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📚 クイズアプリ</h1>
+  <div class="header-right">
+    <img src="{{ user.picture }}" onerror="this.style.display='none'">
+    <span>{{ user.name }}</span>
+    <button class="btn-logout" onclick="location.href='/logout'">ログアウト</button>
+  </div>
+</div>
+
+<div class="container">
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('my')">マイファイル</button>
+    <button class="tab-btn" onclick="switchTab('public')">公開ファイル</button>
+    <button class="tab-btn" onclick="switchTab('upload')">アップロード</button>
+  </div>
+
+  <!-- マイファイル -->
+  <div id="tab-my" class="section active">
+    <div class="card">
+      <h2>📁 マイファイル</h2>
+      <div id="my-files-list"><div class="empty"><div class="empty-icon">📭</div>ファイルがありません</div></div>
+    </div>
+    <div id="quiz-setup-card" style="display:none">
+      <div class="card">
+        <h2>⚙️ クイズ設定</h2>
+        <div class="form-row">
+          <label>グループ選択（複数選択可）</label>
+          <div class="checkbox-group" id="group-checks"></div>
+        </div>
+        <div class="row2">
+          <div class="form-row">
+            <label>問題番号（開始）</label>
+            <input type="number" id="num-from" placeholder="例：1">
+          </div>
+          <div class="form-row">
+            <label>問題番号（終了）</label>
+            <input type="number" id="num-to" placeholder="例：50">
+          </div>
+        </div>
+        <div class="form-row">
+          <label>問題数</label>
+          <select id="count-select">
+            <option value="">全問</option>
+            <option value="5">5問</option>
+            <option value="10">10問</option>
+            <option value="20">20問</option>
+            <option value="30">30問</option>
+            <option value="50">50問</option>
+          </select>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="startQuiz()">🎯 クイズ開始</button>
+          <button class="btn btn-secondary" onclick="showPdfOptions()">📄 PDF作成</button>
+        </div>
+      </div>
+
+      <!-- PDF設定 -->
+      <div class="card" id="pdf-options-card" style="display:none">
+        <h2>📄 PDF設定</h2>
+        <div class="pdf-options">
+          <div class="row2">
+            <div class="form-row">
+              <label>文字サイズ（pt）</label>
+              <input type="number" id="pdf-fontsize" value="10.5" step="0.5" min="6" max="24">
+            </div>
+            <div class="form-row">
+              <label>文字色</label>
+              <input type="color" id="pdf-color" value="#000000" style="width:100%;height:42px;border-radius:8px;border:1.5px solid #e2e8f0;cursor:pointer">
+            </div>
+          </div>
+        </div>
+        <div class="btn-group">
+          <button class="btn btn-primary" onclick="downloadPdf('question')">📥 問題PDFをダウンロード</button>
+          <button class="btn btn-success" onclick="downloadPdf('answer')">📥 解答PDFをダウンロード</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- クイズ画面 -->
+    <div class="card" id="quiz-card" style="display:none">
+      <h2>🎯 クイズ</h2>
+      <div class="progress-bar"><div class="progress-fill" id="progress-fill"></div></div>
+      <div style="font-size:0.82rem;color:#888;text-align:center;margin-bottom:12px" id="quiz-progress"></div>
+      <div class="quiz-q" id="quiz-q"></div>
+      <button class="btn btn-secondary" onclick="toggleAnswer()" style="margin-bottom:12px">解答を見る</button>
+      <div class="quiz-a" id="quiz-a"></div>
+      <div class="judge-btns">
+        <button class="btn btn-success" onclick="judge(true)">✅ 正解</button>
+        <button class="btn btn-danger" onclick="judge(false)">❌ 不正解</button>
+      </div>
+    </div>
+
+    <!-- 結果画面 -->
+    <div class="card" id="result-card" style="display:none">
+      <h2>📊 結果</h2>
+      <div class="score-wrap">
+        <div class="score-num" id="score-num"></div>
+        <div class="score-label">正解</div>
+      </div>
+      <ul class="wrong-list" id="wrong-list"></ul>
+      <div class="btn-group" style="justify-content:center;margin-top:16px">
+        <button class="btn btn-primary" onclick="startQuiz()">🔄 もう一度</button>
+        <button class="btn btn-secondary" onclick="showSetup()">⚙️ 設定に戻る</button>
+        <button class="btn btn-success" id="wrong-pdf-btn" style="display:none" onclick="downloadWrongPdf()">📥 間違い問題PDF</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 公開ファイル -->
+  <div id="tab-public" class="section">
+    <div class="card">
+      <h2>🌐 公開ファイル</h2>
+      <div class="form-row">
+        <input type="text" id="public-search" placeholder="🔍 タイトルで検索..." oninput="filterPublicFiles()">
+      </div>
+      <div id="public-files-list"><div class="empty"><div class="empty-icon">🌐</div>公開ファイルがありません</div></div>
+    </div>
+  </div>
+
+  <!-- アップロード -->
+  <div id="tab-upload" class="section">
+    <div class="card">
+      <h2>📤 CSVアップロード</h2>
+      <div class="alert alert-info">
+        CSVの列：<strong>問題番号, グループ, 問題, 解答</strong>（1行目はヘッダー）
+      </div>
+      <div class="form-row">
+        <label>タイトル</label>
+        <input type="text" id="upload-title" placeholder="例：生物学 第1章">
+      </div>
+      <div class="form-row">
+        <div class="upload-zone" onclick="document.getElementById('file-input').click()" id="upload-zone">
+          <div class="upload-icon">📂</div>
+          <div>クリックしてCSVを選択</div>
+          <div style="font-size:0.78rem;margin-top:4px" id="file-name-display">ファイル未選択</div>
+        </div>
+        <input type="file" id="file-input" accept=".csv" style="display:none" onchange="onFileSelect(this)">
+      </div>
+      <div class="form-row">
+        <label class="chk-label" id="public-chk-label">
+          <input type="checkbox" id="is-public" onchange="togglePublicChk()">
+          🌐 他のユーザーに公開する
+        </label>
+      </div>
+      <button class="btn btn-primary" onclick="uploadCsv()">アップロード</button>
+      <div id="upload-msg" style="margin-top:12px"></div>
+    </div>
+  </div>
+</div>
+
+<script>
+let currentFile = null;
+let questions = [];
+let current = 0;
+let correct = 0;
+let wrongList = [];
+
+function switchTab(tab) {
+  document.querySelectorAll('.tab-btn').forEach((b,i) => b.classList.toggle('active', ['my','public','upload'][i]===tab));
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.getElementById('tab-'+tab).classList.add('active');
+  if(tab==='public') loadPublicFiles();
+  if(tab==='my') loadMyFiles();
+}
+
+async function loadMyFiles() {
+  const res = await fetch('/api/files');
+  const files = await res.json();
+  const el = document.getElementById('my-files-list');
+  if(!files.length){ el.innerHTML='<div class="empty"><div class="empty-icon">📭</div>ファイルがありません</div>'; return; }
+  el.innerHTML = files.map(f => `
+    <div class="file-item ${currentFile?.id===f.id?'active':''}" onclick="selectFile(${JSON.stringify(f).replace(/"/g,'&quot;')})">
+      <div>
+        <div class="file-item-name">${f.title}${f.is_public?'<span class="badge badge-public">公開</span>':''}</div>
+        <div class="file-item-meta">${f.created_at.slice(0,10)}</div>
+      </div>
+      <button class="btn btn-secondary btn-sm" onclick="event.stopPropagation();removeFile('${f.id}')">削除</button>
+    </div>`).join('');
+}
+
+let allPublicFiles = [];
+
+async function loadPublicFiles() {
+  const res = await fetch('/api/files/public');
+  allPublicFiles = await res.json();
+  renderPublicFiles(allPublicFiles);
+}
+
+function filterPublicFiles() {
+  const keyword = document.getElementById('public-search').value.toLowerCase();
+  const filtered = allPublicFiles.filter(f => f.title.toLowerCase().includes(keyword));
+  renderPublicFiles(filtered);
+}
+
+function renderPublicFiles(files) {
+  const el = document.getElementById('public-files-list');
+  if(!files.length){ el.innerHTML='<div class="empty"><div class="empty-icon">🌐</div>該当するファイルがありません</div>'; return; }
+  el.innerHTML = files.map(f => `
+    <div class="file-item">
+      <div>
+        <div class="file-item-name">${f.title}</div>
+        <div class="file-item-meta">${f.owner_email} · ${f.created_at.slice(0,10)}</div>
+      </div>
+      <button class="btn btn-success btn-sm" onclick="savePublicFile('${f.id}')">保存</button>
+    </div>`).join('');
+}
+
+async function selectFile(f) {
+  currentFile = f;
+  document.getElementById('quiz-setup-card').style.display='block';
+  document.getElementById('quiz-card').style.display='none';
+  document.getElementById('result-card').style.display='none';
+  document.getElementById('pdf-options-card').style.display='none';
+  loadMyFiles();
+  const res = await fetch(`/api/files/${f.id}/groups`);
+  const groups = await res.json();
+  const gc = document.getElementById('group-checks');
+  gc.innerHTML = groups.map(g => `
+    <label class="chk-label">
+      <input type="checkbox" value="${g}"> ${g||'(未分類)'}
+    </label>`).join('');
+  gc.querySelectorAll('.chk-label').forEach(label => {
+    label.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('checked');
+      this.querySelector('input').checked = this.classList.contains('checked');
+    });
+  });
+}
+  gc.innerHTML = groups.map(g => `
+    <label class="chk-label">
+      <input type="checkbox" value="${g}"> ${g||'(未分類)'}
+    </label>`).join('');
+
+// ラベルにイベントをJSで直接登録
+  gc.querySelectorAll('.chk-label').forEach(label => {
+    label.addEventListener('click', function(e) {
+      e.preventDefault();
+      this.classList.toggle('checked');
+      this.querySelector('input').checked = this.classList.contains('checked');
+    });
+  });
+
+function toggleChk(label) {
+  label.classList.toggle('checked');
+  label.querySelector('input').checked = label.classList.contains('checked');
+}
+
+async function removeFile(id) {
+  if(!confirm('このファイルをリストから削除しますか？')) return;
+  await fetch(`/api/files/${id}`, {method:'DELETE'});
+  if(currentFile?.id===id){ currentFile=null; document.getElementById('quiz-setup-card').style.display='none'; }
+  loadMyFiles();
+}
+
+async function savePublicFile(id) {
+  await fetch(`/api/files/${id}/save`, {method:'POST'});
+  alert('マイファイルに保存しました');
+}
+
+async function startQuiz() {
+  if(!currentFile) return alert('ファイルを選択してください');
+  const groups = [...document.querySelectorAll('#group-checks .chk-label.checked input')].map(i=>i.value);
+  const body = {
+    file_id: currentFile.id,
+    groups,
+    num_from: document.getElementById('num-from').value||null,
+    num_to: document.getElementById('num-to').value||null,
+    count: document.getElementById('count-select').value||null
+  };
+  const res = await fetch('/api/quiz', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  questions = await res.json();
+  if(!questions.length) return alert('条件に合う問題がありません');
+  current=0; correct=0; wrongList=[];
+  document.getElementById('quiz-setup-card').style.display='none';
+  document.getElementById('quiz-card').style.display='block';
+  document.getElementById('result-card').style.display='none';
+  showQuestion();
+}
+
+function showQuestion() {
+  const q = questions[current];
+  const total = questions.length;
+  document.getElementById('quiz-q').textContent = q.question;
+  document.getElementById('quiz-a').textContent = q.answer;
+  document.getElementById('quiz-a').classList.remove('show');
+  document.getElementById('quiz-progress').textContent = `${current+1} / ${total}`;
+  document.getElementById('progress-fill').style.width = `${(current/total)*100}%`;
+}
+
+function toggleAnswer() {
+  document.getElementById('quiz-a').classList.toggle('show');
+}
+
+function judge(ok) {
+  if(ok) correct++;
+  else wrongList.push(questions[current]);
+  current++;
+  if(current >= questions.length) showResult();
+  else showQuestion();
+}
+
+function showResult() {
+  document.getElementById('quiz-card').style.display='none';
+  document.getElementById('result-card').style.display='block';
+  document.getElementById('quiz-setup-card').style.display='block';
+  document.getElementById('score-num').textContent = `${correct} / ${questions.length}`;
+  const wl = document.getElementById('wrong-list');
+  wl.innerHTML = wrongList.length ? wrongList.map(q=>`
+    <li class="wrong-item">
+      <div class="wrong-q">Q: ${q.question}</div>
+      <div class="wrong-a">A: ${q.answer}</div>
+    </li>`).join('') : '<li style="text-align:center;padding:12px;color:#48bb78">全問正解！🎉</li>';
+  document.getElementById('wrong-pdf-btn').style.display = wrongList.length?'':'none';
+}
+
+function showSetup() {
+  document.getElementById('result-card').style.display='none';
+  document.getElementById('quiz-card').style.display='none';
+}
+
+function showPdfOptions() {
+  const el = document.getElementById('pdf-options-card');
+  el.style.display = el.style.display==='none' ? 'block' : 'none';
+}
+
+async function downloadPdf(mode) {
+  if(!currentFile) return alert('ファイルを選択してください');
+  const groups = [...document.querySelectorAll('#group-checks .chk-label.checked input')].map(i=>i.value);
+  const body = {
+    file_id: currentFile.id,
+    groups,
+    num_from: document.getElementById('num-from').value||null,
+    num_to: document.getElementById('num-to').value||null,
+    count: document.getElementById('count-select').value||null
+  };
+  const qRes = await fetch('/api/quiz', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(body)});
+  const qs = await qRes.json();
+  if(!qs.length) return alert('条件に合う問題がありません');
+  const pdfBody = {
+    questions: qs, mode,
+    font_size: parseFloat(document.getElementById('pdf-fontsize').value),
+    text_color: document.getElementById('pdf-color').value
+  };
+  const res = await fetch('/api/pdf', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(pdfBody)});
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download=mode==='question'?'questions.pdf':'answers.pdf'; a.click();
+}
+
+async function downloadWrongPdf() {
+  if(!wrongList.length) return;
+  const pdfBody = {
+    questions: wrongList, mode: 'question',
+    font_size: 10.5, text_color: '#000000'
+  };
+  const res = await fetch('/api/pdf', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(pdfBody)});
+  const blob = await res.blob();
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a'); a.href=url; a.download='wrong_questions.pdf'; a.click();
+}
+
+function onFileSelect(input) {
+  document.getElementById('file-name-display').textContent = input.files[0]?.name || 'ファイル未選択';
+}
+
+function togglePublicChk() {
+  const el = document.getElementById('public-chk-label');
+  el.classList.toggle('checked', document.getElementById('is-public').checked);
+}
+
+async function uploadCsv() {
+  const file = document.getElementById('file-input').files[0];
+  if(!file) return alert('CSVファイルを選択してください');
+  const title = document.getElementById('upload-title').value || file.name;
+  const isPublic = document.getElementById('is-public').checked ? '1' : '0';
+  const fd = new FormData();
+  fd.append('file', file); fd.append('title', title); fd.append('is_public', isPublic);
+  const msg = document.getElementById('upload-msg');
+  msg.innerHTML = '<div class="alert alert-info">アップロード中...</div>';
+  const res = await fetch('/api/upload', {method:'POST', body:fd});
+  const data = await res.json();
+  if(data.error) { msg.innerHTML=`<div class="alert" style="background:#fff5f5;color:#c53030;border:1px solid #feb2b2">${data.error}</div>`; return; }
+  msg.innerHTML = '<div class="alert alert-success">✅ アップロード完了！</div>';
+  document.getElementById('file-input').value='';
+  document.getElementById('file-name-display').textContent='ファイル未選択';
+  document.getElementById('upload-title').value='';
+}
+
+loadMyFiles();
+</script>
+</body>
+</html>
