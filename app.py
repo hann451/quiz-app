@@ -7,6 +7,7 @@ from reportlab.pdfgen import canvas
 from reportlab.lib.colors import HexColor
 from reportlab.pdfbase import pdfmetrics
 from reportlab.pdfbase.cidfonts import UnicodeCIDFont
+from reportlab.pdfbase.pdfmetrics import stringWidth
 
 app = Flask(__name__)
 app.secret_key = os.environ.get("SECRET_KEY", "change-me-secret")
@@ -240,6 +241,21 @@ def get_quiz():
     return jsonify(questions)
 
 # ── PDF生成 ───────────────────────────────────────────
+def wrap_text(text, font_name, font_size, max_width):
+    lines = []
+    current = ""
+    for ch in text:
+        test = current + ch
+        if stringWidth(test, font_name, font_size) > max_width:
+            lines.append(current)
+            current = ch
+        else:
+            current = test
+    if current:
+        lines.append(current)
+    return lines
+
+
 def build_pdf(questions, mode, font_size, text_color):
     pdfmetrics.registerFont(UnicodeCIDFont("HeiseiKakuGo-W5"))
     buf = io.BytesIO()
@@ -257,15 +273,7 @@ def build_pdf(questions, mode, font_size, text_color):
     for i, q in enumerate(questions, 1):
         text = f"Q{i}. {q['question']}" if mode == "question" else f"Q{i}. {q['answer']}"
 
-        # 1文字あたりの幅（日本語は全角＝font_sizeとほぼ同じ）
-        char_width = font_size
-        max_chars = int(max_width / char_width)
-
-        # 折り返し処理
-        lines = []
-        while len(text) > 0:
-            lines.append(text[:max_chars])
-            text = text[max_chars:]
+        lines = wrap_text(text, "HeiseiKakuGo-W5", font_size, max_width)
 
         for line in lines:
             if y < 50:
