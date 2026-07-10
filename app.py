@@ -243,16 +243,20 @@ def get_quiz():
 # ── PDF生成 ───────────────────────────────────────────
 def wrap_text(text, font_name, font_size, max_width):
     lines = []
-    current = ""
-    for ch in text:
-        test = current + ch
-        if stringWidth(test, font_name, font_size) > max_width:
+    for paragraph in text.split("\n"):
+        if paragraph == "":
+            lines.append("")
+            continue
+        current = ""
+        for ch in paragraph:
+            test = current + ch
+            if stringWidth(test, font_name, font_size) > max_width:
+                lines.append(current)
+                current = ch
+            else:
+                current = test
+        if current:
             lines.append(current)
-            current = ch
-        else:
-            current = test
-    if current:
-        lines.append(current)
     return lines
 
 
