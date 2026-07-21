@@ -309,10 +309,23 @@ def generate_pdf():
                      as_attachment=True, download_name=filename)
 
 # === Wiki routes (Astro Static Build) ===
+# wiki/dist にはAstroで生成した静的ファイルが配置されている。
+# 本番ではNode.js不要: dist/ はビルド済みの状態でGitにコミットされている。
 WIKI_DIST = os.path.join(os.path.dirname(__file__), "wiki", "dist")
+
+import logging
+if not os.path.isdir(WIKI_DIST):
+    logging.warning(
+        "WARNING: wiki/dist ディレクトリが見つかりません。"
+        "Wikiページは表示できません。"
+        "ローカルで 'cd wiki && npm install && npm run build' を実行し、"
+        "wiki/dist をコミットしてください。"
+    )
 
 @app.route("/wiki/")
 def serve_wiki_index():
+    if not os.path.isdir(WIKI_DIST):
+        abort(404)
     return send_from_directory(WIKI_DIST, "index.html")
 
 @app.route("/wiki/<path:filename>")
