@@ -6,7 +6,7 @@ title: 9. その他の周辺システム
 
 栄冠ナインでは、3月に卒業した3年生が様々な職業に就職し、その後OB・OGマスに止まった際にチームへ恩恵をもたらしてくれます。
 
-![卒業生就職先イメージ](https://placehold.co/800x400/805ad5/ffffff?text=Alumni+Jobs)
+![卒業生就職先イメージ](https://img.game8.jp/12643542/118b78c3775d296c010266199cf04e43.webp/show)
 
 | 職業 | マスに止まった際の効果 | 優先度 |
 |---|---|:---:|
@@ -28,7 +28,7 @@ title: 9. その他の周辺システム
 
 チームの「評判」と選手の「テンション」は、チームの地力を底上げする重要なパラメータです。
 
-![評判テンションイメージ](https://placehold.co/800x400/dd6b20/ffffff?text=Reputation+%26+Tension)
+![評判テンションイメージ](https://img.game8.jp/12641771/8680631c5f03de4b035d239220a2887d.webp/show)
 
 ### 学校の評判の恩恵
 
@@ -60,7 +60,7 @@ title: 9. その他の周辺システム
 
 特定の条件を満たすと、実在のプロ野球選手や往年の名選手（転生OB）が新入生として入学してきます。
 
-![転生OBイメージ](https://placehold.co/800x400/e53e3e/ffffff?text=Reincarnated+Players)
+![転生OBイメージ](https://img.game8.jp/10278503/c442dfc3e6e90b3a140f05eada03f20e.png/show)
 
 | スカウト方法 | 詳細・仕様 |
 |---|---|
@@ -82,7 +82,7 @@ title: 9. その他の周辺システム
 
 [夏の甲子園や春の甲子園](/wiki/tournaments)で優勝すると、「優勝旗」を獲得できます。
 
-![優勝旗イメージ](https://placehold.co/800x400/ecc94b/333333?text=Championship+Flag)
+![優勝旗イメージ](https://img.game8.jp/12424056/94eac0f27c9e2dcaa1843ffd3a66e8e2.png/thumb)
 
 | 優勝旗の仕様 | 詳細 |
 |---|---|

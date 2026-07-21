@@ -6,7 +6,7 @@ title: 10. 大会・全国大会関連
 
 3年縛りにおける最終目標は「3年目夏の甲子園優勝」ですが、そこに至るまでの各大会を勝ち抜き、試合経験値を積むことが必須となります。
 
-![甲子園イメージ](https://placehold.co/800x400/e53e3e/ffffff?text=Koshien+Tournaments)
+![甲子園イメージ](https://img.game8.jp/12645046/5ddfcdd1bf814a88d4dab867fb07a4b0.webp/show)
 
 | 大会名 | 開催時期 | 出場・勝ち抜け条件 | 備考 |
 |---|---|---|---|
@@ -27,7 +27,7 @@ title: 10. 大会・全国大会関連
 
 毎年8月27日、高校日本代表（U-18）のメンバーが最大3名まで選出され、世界大会へ派遣されます。
 
-![日本代表イメージ](https://placehold.co/800x400/2b6cb0/ffffff?text=National+Team)
+![日本代表イメージ](https://img.game8.jp/12645046/5ddfcdd1bf814a88d4dab867fb07a4b0.webp/show)
 
 ### 選出される条件
 
@@ -55,7 +55,7 @@ title: 10. 大会・全国大会関連
 
 最新作やアップデートにより、栄冠ナインをベースにした新しいコラボ要素が追加されています。
 
-![コラボイメージ](https://placehold.co/800x400/9f7aea/ffffff?text=Collaborations)
+![コラボイメージ](https://img.game8.jp/12643542/118b78c3775d296c010266199cf04e43.webp/show)
 
 | 要素 | 概要と影響 |
 |---|---|
