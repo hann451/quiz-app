@@ -6,7 +6,7 @@ title: 4. すごろく(マス)関連
 
 栄冠ナインの進行画面は「すごろく」形式になっており、止まるマスの色によって発生するイベントが大きく異なります。どの色のマスを踏むかで育成効率が大きく変わるため、進行アイコンの使い方と合わせて理解しましょう。
 
-![マス一覧イメージ](https://img.game8.jp/10278503/c442dfc3e6e90b3a140f05eada03f20e.png/show)
+![マス一覧イメージ (出典: https://img.game8.jp/10278503/c442dfc3e6e90b3a140f05eada03f20e.png/show)](/images/board-squares/c442dfc3e6e90b3a140f05eada03f20e.png)
 
 | マス色 | 効果 | 発生内容の例 |
 |:---:|---|---|
@@ -40,7 +40,7 @@ title: 4. すごろく(マス)関連
 
 進行に使う「練習アイコン」の種類と数字によって、獲得できる経験値が決まります。
 
-![練習アイコンイメージ](https://img.game8.jp/12643542/118b78c3775d296c010266199cf04e43.webp/show)
+![練習アイコンイメージ (出典: https://img.game8.jp/12643542/118b78c3775d296c010266199cf04e43.webp/show)](/images/board-squares/118b78c3775d296c010266199cf04e43.webp)
 
 ### 練習アイコンの基礎経験値
 
@@ -79,7 +79,7 @@ title: 4. すごろく(マス)関連
 
 パワプロ2024以降で追加された進行アイコンです。進行距離は固定1マスですが、練習効率アップと試合の勝率アップという2つの効果があります。
 
-![他校調査イメージ](https://img.game8.jp/12424056/94eac0f27c9e2dcaa1843ffd3a66e8e2.png/thumb)
+![他校調査イメージ (出典: https://img.game8.jp/12424056/94eac0f27c9e2dcaa1843ffd3a66e8e2.png/thumb)](/images/board-squares/94eac0f27c9e2dcaa1843ffd3a66e8e2.png)
 
 | 項目 | 内容 |
 |---|---|
@@ -103,7 +103,7 @@ title: 4. すごろく(マス)関連
 
 特訓マスではランダムに選ばれた選手1人に特殊能力取得チャレンジが発生します。成功すると青特を獲得でき、信頼度も上昇します。
 
-![特訓マスイメージ](https://img.game8.jp/12641762/ffae1072a6f2aee3b6f58d02553a3018.webp/show)
+![特訓マスイメージ (出典: https://img.game8.jp/12641762/ffae1072a6f2aee3b6f58d02553a3018.webp/show)](/images/board-squares/ffae1072a6f2aee3b6f58d02553a3018.webp)
 
 | 特殊能力 | 対象 | 狙い方・備考 |
 |---|---|---|
@@ -125,7 +125,7 @@ title: 4. すごろく(マス)関連
 
 合宿（夏合宿・冬合宿）は集中的に育成ができる期間です。合宿前に「戦績ポイント」でショップから器材を購入しておくと、練習効率がさらに向上します。
 
-![合宿ショップイメージ](https://img.game8.jp/12641762/ffae1072a6f2aee3b6f58d02553a3018.webp/show)
+![合宿ショップイメージ (出典: https://img.game8.jp/12641762/ffae1072a6f2aee3b6f58d02553a3018.webp/show)](/images/board-squares/ffae1072a6f2aee3b6f58d02553a3018.webp)
 
 ### ショップアイテム優先度ランキング（1000ptクラス）
 
