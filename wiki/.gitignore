@@ -1,0 +1,29 @@
+# build output
+# NOTE: dist/ は通常 .gitignore に含めるべき生成物ですが、
+# 本番サーバー(Python/Flaskのみ)でNode.js/npmが不要になるよう、
+# 意図的にGitリポジトリにコミットしています。
+# コンテンツ(Markdown)を更新した場合は、ローカルで再ビルドしてからコミットしてください。
+# 手順: cd wiki && npm install && npm run build && cd .. && git add wiki/dist && git commit
+# dist/
+
+# generated types
+.astro/
+
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
+.env
+.env.production
+
+# macOS-specific files
+.DS_Store
+
+# jetbrains setting folder
+.idea/

@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file
+from flask import Flask, render_template, request, jsonify, session, redirect, url_for, send_file, send_from_directory, abort
 from authlib.integrations.flask_client import OAuth
 import sqlite3, os, csv, io, uuid, random, json
 from datetime import datetime
@@ -307,6 +307,44 @@ def generate_pdf():
     filename = "questions.pdf" if mode == "question" else "answers.pdf"
     return send_file(buf, mimetype="application/pdf",
                      as_attachment=True, download_name=filename)
+
+# === Wiki routes (Astro Static Build) ===
+# wiki/dist にはAstroで生成した静的ファイルが配置されている。
+# 本番ではNode.js不要: dist/ はビルド済みの状態でGitにコミットされている。
+WIKI_DIST = os.path.join(os.path.dirname(__file__), "wiki", "dist")
+
+import logging
+if not os.path.isdir(WIKI_DIST):
+    logging.warning(
+        "WARNING: wiki/dist ディレクトリが見つかりません。"
+        "Wikiページは表示できません。"
+        "ローカルで 'cd wiki && npm install && npm run build' を実行し、"
+        "wiki/dist をコミットしてください。"
+    )
+
+@app.route("/wiki/", strict_slashes=False)
+def serve_wiki_index():
+    if not os.path.isdir(WIKI_DIST):
+        return f"Wiki Not Found: Directory {WIKI_DIST} does not exist on the server. Please build the wiki and ensure 'dist' is committed.", 404
+    return send_from_directory(WIKI_DIST, "index.html")
+
+@app.route("/wiki/<path:filename>")
+def serve_wiki_static(filename):
+    path = os.path.join(WIKI_DIST, filename)
+    if os.path.isdir(path):
+        return send_from_directory(path, "index.html")
+    elif os.path.exists(path):
+        return send_from_directory(WIKI_DIST, filename)
+    elif os.path.exists(path + ".html"):
+        return send_from_directory(WIKI_DIST, filename + ".html")
+    else:
+        # Fallback to index.html for Astro sub-routes if configured for hybrid/SPA, 
+        # but Astro default is static directories. Let's just try index.html inside the dir.
+        dir_path_index = os.path.join(WIKI_DIST, filename, "index.html")
+        if os.path.exists(dir_path_index):
+            return send_from_directory(os.path.join(WIKI_DIST, filename), "index.html")
+        abort(404)
+
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
