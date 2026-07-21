@@ -6,7 +6,7 @@ title: 3. 都道府県リスト・転生OB
 
 栄冠ナインでは、選んだ都道府県の「高校数（★の数）」によって夏の地方大会で勝ち抜くために必要な試合数が変わります。
 
-![都道府県選びのイメージ](/images/prefectures/8680631c5f03de4b035d239220a2887d.webp)
+![都道府県選びのイメージ](/wiki/images/prefectures/8680631c5f03de4b035d239220a2887d.webp)
 
 - 高校数★4以上（激戦区）: 予選が**6試合**になる傾向がある。
 - 高校数★3以下（過疎区）: 予選が**5試合**になる傾向がある。
@@ -48,7 +48,7 @@ title: 3. 都道府県リスト・転生OB
 
 </details>
 
-![上位都道府県の転生OBイメージ](/images/prefectures/1e21ab40fc0e178099512b13afac8a26.webp)
+![上位都道府県の転生OBイメージ](/wiki/images/prefectures/1e21ab40fc0e178099512b13afac8a26.webp)
 
 ---
 

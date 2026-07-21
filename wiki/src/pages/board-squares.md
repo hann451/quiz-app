@@ -39,7 +39,7 @@ title: 4. すごろく(マス)と進行アイコン・器材
 
 ## マスの種類と優先度
 
-![マス一覧イメージ](/images/board-squares/c442dfc3e6e90b3a140f05eada03f20e.png)
+![マス一覧イメージ](/wiki/images/board-squares/c442dfc3e6e90b3a140f05eada03f20e.png)
 
 | マスの種類 | 効果詳細 | 優先度目安 |
 |---|---|---|
