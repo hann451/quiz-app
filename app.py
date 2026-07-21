@@ -322,10 +322,10 @@ if not os.path.isdir(WIKI_DIST):
         "wiki/dist をコミットしてください。"
     )
 
-@app.route("/wiki/")
+@app.route("/wiki/", strict_slashes=False)
 def serve_wiki_index():
     if not os.path.isdir(WIKI_DIST):
-        abort(404)
+        return f"Wiki Not Found: Directory {WIKI_DIST} does not exist on the server. Please build the wiki and ensure 'dist' is committed.", 404
     return send_from_directory(WIKI_DIST, "index.html")
 
 @app.route("/wiki/<path:filename>")

@@ -1,11 +1,41 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import WikiLayout from '../layouts/WikiLayout.astro';
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<WikiLayout frontmatter={{title: 'Wikiトップ'}}>
+	<div class="logo-area">
+		<div class="logo">🏆</div>
+		<h1 style="border-bottom:none; margin-bottom:10px; font-size:1.6rem;">パワプロ2026-2027<br>栄冠ナイン(3年縛り)攻略Wiki</h1>
+		<p>知りたい情報を選択してください</p>
+	</div>
+
+	<div style="background: #f7fafc; border-left: 4px solid #667eea; padding: 15px; margin-bottom: 30px; border-radius: 4px;">
+		<h2 style="margin-top: 0; font-size: 1.2rem; border-bottom: none; color: #2d3748;">🔥 攻略の3本柱</h2>
+		<p style="font-size: 0.9rem; margin-bottom: 15px; color: #4a5568;">3年縛りで勝敗を最も左右する、絶対に押さえておくべき重要カテゴリです。</p>
+		<div style="display: flex; flex-direction: column; gap: 10px;">
+			<a href="/wiki/prefectures" style="display: block; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-decoration: none; color: #667eea; font-weight: bold; border: 1px solid #e2e8f0;">
+				🗺️ 3. 都道府県リスト <span style="font-size:0.8em; font-weight:normal; color:#718096;">(転生OBの狙い撃ち)</span>
+			</a>
+			<a href="/wiki/personalities" style="display: block; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-decoration: none; color: #667eea; font-weight: bold; border: 1px solid #e2e8f0;">
+				🎭 5. 性格と上昇率・固有戦術 <span style="font-size:0.8em; font-weight:normal; color:#718096;">(最強戦術「魔物」の活用)</span>
+			</a>
+			<a href="/wiki/training-policy" style="display: block; background: white; padding: 10px 15px; border-radius: 6px; box-shadow: 0 1px 3px rgba(0,0,0,0.1); text-decoration: none; color: #667eea; font-weight: bold; border: 1px solid #e2e8f0;">
+				⚾ 6. 育成方針(投手・野手) <span style="font-size:0.8em; font-weight:normal; color:#718096;">(勝つための能力の上げ方)</span>
+			</a>
+		</div>
+	</div>
+	
+	<h2 style="font-size: 1.2rem; margin-bottom: 15px;">全カテゴリ一覧</h2>
+	<ul class="nav-list">
+		<li><a href="/wiki/basic-rules">1. モード基本仕様 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/schedule">2. 年間スケジュールと止まるべき日 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/prefectures">3. 都道府県リスト(47都道府県) <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/board-squares">4. すごろく(マス)関連 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/personalities">5. 性格と上昇率・固有戦術 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/training-policy">6. 育成方針(投手・野手) <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/card-effects">7. カード効果・特殊能力 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/match-strategy">8. 試合の立ち回り <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/other-systems">9. その他の周辺システム <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+		<li><a href="/wiki/tournaments">10. 大会・全国大会関連 <span style="font-size:0.8em; color:#48bb78;">✅</span></a></li>
+	</ul>
+</WikiLayout>
