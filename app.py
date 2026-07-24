@@ -385,8 +385,15 @@ def serve_mhw_index():
 
 @app.route("/mhwilds-builder/<path:filename>")
 def serve_mhw_static(filename):
-    for candidate in (filename, f"{filename}/index.html", f"{filename}.html"):
-        if os.path.isfile(os.path.join(MHW_DIST, candidate)):
+    rel = filename.strip("/")
+    if not rel:
+        return _send_mhw("index.html")
+    candidates = (rel, f"{rel}/index.html", f"{rel}.html",
+                  f"{rel}/index.txt", f"{rel}.txt")
+    root = os.path.realpath(MHW_DIST)
+    for candidate in candidates:
+        full = os.path.realpath(os.path.join(root, candidate))
+        if full.startswith(root + os.sep) and os.path.isfile(full):
             return _send_mhw(candidate)
     abort(404)
 
