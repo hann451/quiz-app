@@ -1,0 +1,4 @@
+mhwilds/dist/** -text
+wiki/dist/** -text
+*.gz binary
+*.woff2 binary
