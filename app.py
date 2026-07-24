@@ -345,6 +345,50 @@ def serve_wiki_static(filename):
             return send_from_directory(os.path.join(WIKI_DIST, filename), "index.html")
         abort(404)
 
+# === MH Wilds Builder routes (Next.js Static Export) ===
+MHW_DIST = os.path.join(os.path.dirname(__file__), "mhwilds", "dist")
+
+if not os.path.isdir(MHW_DIST):
+    logging.warning("WARNING: mhwilds/dist が見つかりません。")
+
+
+def _send_mhw(relpath):
+    gz = relpath + ".gz"
+    accepts_gzip = "gzip" in request.headers.get("Accept-Encoding", "")
+
+    if accepts_gzip and os.path.isfile(os.path.join(MHW_DIST, gz)):
+        resp = send_from_directory(MHW_DIST, gz)
+        resp.headers["Content-Encoding"] = "gzip"
+        resp.headers["Vary"] = "Accept-Encoding"
+        if relpath.endswith(".json"):
+            resp.headers["Content-Type"] = "application/json; charset=utf-8"
+        elif relpath.endswith(".js"):
+            resp.headers["Content-Type"] = "application/javascript; charset=utf-8"
+        elif relpath.endswith(".css"):
+            resp.headers["Content-Type"] = "text/css; charset=utf-8"
+    else:
+        resp = send_from_directory(MHW_DIST, relpath)
+
+    if relpath.startswith("_next/static/"):
+        resp.headers["Cache-Control"] = "public, max-age=31536000, immutable"
+    else:
+        resp.headers["Cache-Control"] = "public, max-age=0, must-revalidate"
+    return resp
+
+
+@app.route("/mhwilds-builder/", strict_slashes=False)
+def serve_mhw_index():
+    if not os.path.isdir(MHW_DIST):
+        return "MH Wilds Builder is not deployed yet.", 404
+    return _send_mhw("index.html")
+
+
+@app.route("/mhwilds-builder/<path:filename>")
+def serve_mhw_static(filename):
+    for candidate in (filename, f"{filename}/index.html", f"{filename}.html"):
+        if os.path.isfile(os.path.join(MHW_DIST, candidate)):
+            return _send_mhw(candidate)
+    abort(404)
 
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")
