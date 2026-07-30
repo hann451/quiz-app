@@ -7,7 +7,7 @@ LOG=/home/miyamoto/myapp/deploy.log
 BEFORE=$(git rev-parse HEAD)
 timeout 60 git fetch origin main --quiet || { echo "$(date -Is) FETCH FAILED" >> "$LOG"; exit 1; }
 if ! git merge --ff-only origin/main --quiet; then
-  echo "$(date -Is) FF-ONLY FAILED (ローカル変更か履歴の分岐あり。手動対応が必要)" >> "$LOG"
+  echo "$(date -Is) FF-ONLY FAILED (local changes or diverged history)" >> "$LOG"
   exit 1
 fi
 AFTER=$(git rev-parse HEAD)
