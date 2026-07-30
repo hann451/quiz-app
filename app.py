@@ -397,5 +397,24 @@ def serve_mhw_static(filename):
             return _send_mhw(candidate)
     abort(404)
 
+# === Timetable routes ===
+TIMETABLE_DIST = os.path.join(os.path.dirname(__file__), "timetable", "dist")
+
+@app.route("/timetable/", strict_slashes=False)
+def serve_timetable_index():
+    if not os.path.isdir(TIMETABLE_DIST):
+        return "Timetable is not deployed yet.", 404
+    return send_from_directory(TIMETABLE_DIST, "index.html")
+
+@app.route("/timetable/<path:filename>")
+def serve_timetable_static(filename):
+    path = os.path.join(TIMETABLE_DIST, filename)
+    if os.path.isdir(path):
+        return send_from_directory(path, "index.html")
+    elif os.path.exists(path):
+        return send_from_directory(TIMETABLE_DIST, filename)
+    else:
+        abort(404)
+
 if __name__ == "__main__":
     app.run(debug=True, host="0.0.0.0")

@@ -1,0 +1,26 @@
+[
+  {
+    "type": "multi_room",
+    "course": "multi1"
+  },
+  {
+    "type": "multi_room",
+    "course": "multi2"
+  },
+  {
+    "type": "multi_room",
+    "course": "multi3"
+  },
+  {
+    "type": "multi_room",
+    "course": "multi4"
+  },
+  {
+    "type": "no_slot",
+    "course": "yba714101"
+  },
+  {
+    "type": "slotless",
+    "course": "yba714101"
+  }
+]

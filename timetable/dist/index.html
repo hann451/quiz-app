@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=900">
+  <title>横浜キャンパス時間割</title>
+  <style>
+    :root {
+      --q1-color: #6E9A4F;
+      --q2-color: #2C7F9B;
+      --q3-color: #B5622A;
+      --q4-color: #5D5B8D;
+      --q-color: var(--q1-color); /* Default */
+      
+      --bg: #f8f9fa;
+      --text: #333333;
+      --border: #e0e0e0;
+      --white: #ffffff;
+      
+      --font-mincho: "Yu Mincho", "MS PMincho", "Hiragino Mincho ProN", serif;
+      --font-gothic: "Yu Gothic", "Meiryo", "Hiragino Kaku Gothic ProN", sans-serif;
+      --font-mono: "Consolas", "Courier New", "Menlo", monospace;
+    }
+    
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: var(--font-gothic);
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+    
+    h1, h2, h3, h4, h5, h6 {
+      font-family: var(--font-mincho);
+      font-weight: normal;
+    }
+    
+    /* Layout */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+    
+    /* Banner */
+    #local-storage-warning {
+      display: none;
+      background-color: #ffcc00;
+      color: #333;
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+    }
+    
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+      border-bottom: 2px solid var(--q-color);
+      transition: border-color 0.3s;
+    }
+    
+    header h1 {
+      font-size: 1.5rem;
+      color: var(--q-color);
+      transition: color 0.3s;
+    }
+    
+    .dept-select-wrap select {
+      padding: 6px 12px;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      font-family: var(--font-gothic);
+      font-size: 1rem;
+    }
+    
+    /* Quarter Rail */
+    .quarter-rail {
+      display: flex;
+      margin: 24px 0;
+      gap: 16px;
+    }
+    
+    .semester-group {
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    
+    .semester-label {
+      text-align: center;
+      background-color: #eee;
+      padding: 4px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    
+    .q-buttons {
+      display: flex;
+    }
+    
+    .q-btn {
+      flex: 1;
+      padding: 12px;
+      border: none;
+      background: var(--white);
+      cursor: pointer;
+      font-size: 1.1rem;
+      font-family: var(--font-mono);
+      font-weight: bold;
+      transition: background 0.3s, color 0.3s;
+    }
+    
+    .q-btn:not(:last-child) {
+      border-right: 1px solid var(--border);
+    }
+    
+    .q-btn:hover {
+      background-color: #f0f0f0;
+    }
+    
+    .q-btn[aria-current="true"] {
+      background-color: var(--q-color);
+      color: var(--white);
+    }
+    
+    /* Board */
+    .board-container {
+      overflow-x: auto;
+      margin-bottom: 32px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    }
+    
+    .board {
+      display: grid;
+      grid-template-columns: 50px repeat(6, minmax(140px, 1fr));
+      min-width: 800px;
+    }
+    
+    .board-header {
+      background-color: #fafafa;
+      text-align: center;
+      padding: 8px;
+      font-weight: bold;
+      border-bottom: 2px solid var(--border);
+      border-right: 1px solid var(--border);
+    }
+    
+    .board-cell {
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 8px;
+      min-height: 100px;
+      position: relative;
+    }
+    
+    .board-cell.period-col {
+      background-color: #fafafa;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      font-family: var(--font-mono);
+      font-weight: bold;
+    }
+    
+    .course-card {
+      background-color: rgba(0, 0, 0, 0.03);
+      border-left: 4px solid var(--q-color);
+      padding: 8px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: transform 0.1s;
+    }
+    .course-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .course-title {
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    .course-room {
+      font-size: 0.8rem;
+      color: #666;
+      font-family: var(--font-mono);
+    }
+    
+    /* Intensive & Other */
+    .other-courses {
+      margin-top: 32px;
+      padding: 16px;
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+    }
+    .other-courses h2 {
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      border-bottom: 2px solid var(--q-color);
+      display: inline-block;
+    }
+    
+    /* Dialog */
+    dialog {
+      margin: auto;
+      padding: 24px;
+      border: none;
+      border-radius: 8px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      max-width: 400px;
+      width: 90%;
+    }
+    dialog::backdrop {
+      background: rgba(0, 0, 0, 0.5);
+    }
+    .dialog-content h2 {
+      margin-bottom: 16px;
+    }
+    .dialog-content select {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 16px;
+      font-size: 1rem;
+    }
+    .dialog-content button {
+      width: 100%;
+      padding: 10px;
+      background-color: var(--q1-color);
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .dialog-content button.secondary {
+      background-color: transparent;
+      color: #666;
+      border: 1px solid #ccc;
+      margin-top: 8px;
+    }
+    .dialog-content button.danger {
+      background-color: transparent;
+      color: #d32f2f;
+      border: 1px solid #d32f2f;
+      margin-top: 8px;
+    }
+    
+    /* Picker & Details Specific */
+    .picker-list {
+      max-height: 50vh;
+      overflow-y: auto;
+      margin-bottom: 16px;
+      border: 1px solid #eee;
+      border-radius: 4px;
+    }
+    .picker-item {
+      padding: 12px;
+      border-bottom: 1px solid #eee;
+      cursor: pointer;
+    }
+    .picker-item:hover {
+      background-color: #f9f9f9;
+    }
+    .picker-item:last-child {
+      border-bottom: none;
+    }
+    .picker-item-title {
+      font-weight: bold;
+      color: var(--q-color);
+      margin-bottom: 4px;
+    }
+    .picker-item-meta {
+      font-size: 0.8rem;
+      color: #666;
+    }
+    
+    .details-meta {
+      font-size: 0.9rem;
+      color: #333;
+      margin-bottom: 16px;
+      line-height: 1.5;
+    }
+    .details-meta span {
+      display: inline-block;
+      background: #eee;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-right: 4px;
+      font-size: 0.8rem;
+    }
+    .details-memo textarea {
+      width: 100%;
+      height: 100px;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      resize: vertical;
+      font-family: inherit;
+    }
+    .memo-status {
+      font-size: 0.8rem;
+      color: #669900;
+      text-align: right;
+      min-height: 1.2em;
+    }
+
+    
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 24px 0;
+      color: #888;
+      font-size: 0.9rem;
+    }
+    
+    /* Print */
+    @media print {
+      body { background: white; color: black; }
+      header select, .q-buttons, button, .dept-select-wrap { display: none !important; }
+      .board-container { box-shadow: none; border: none; margin-bottom: 0; }
+      .board { border-top: 2px solid #333; border-left: 2px solid #333; min-width: auto; }
+      .board-header, .board-cell { border-right: 1px solid #333; border-bottom: 1px solid #333; }
+      .board-cell { min-height: 80px; }
+      .course-card { border-left: none; padding: 4px; box-shadow: none !important; background-color: #f5f5f5 !important; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+      #intensive-board { border: none; margin-top: 16px; padding: 0; }
+      .other-courses h2 { border-bottom: 1px solid #333; }
+      #total-credits { color: #333 !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="local-storage-warning">
+    お使いのブラウザではデータ保存が利用できません（プライベートモード等）。リロードすると設定が消えます。
+  </div>
+
+  <div class="container">
+    <header>
+      <h1>横浜キャンパス時間割</h1>
+      <div style="display: flex; align-items: center; gap: 16px;">
+        <div id="total-credits" style="font-weight: bold; font-size: 0.95rem; color: var(--q-color); white-space: nowrap;">合計単位数: 0.0</div>
+        <div class="dept-select-wrap">
+          <select id="header-dept-select"></select>
+        </div>
+      </div>
+    </header>
+
+    <div class="quarter-rail">
+      <div class="semester-group">
+        <div class="semester-label">前期</div>
+        <div class="q-buttons">
+          <button class="q-btn" data-q="1" aria-current="true">1Q</button>
+          <button class="q-btn" data-q="2">2Q</button>
+        </div>
+      </div>
+      <div class="semester-group">
+        <div class="semester-label">後期</div>
+        <div class="q-buttons">
+          <button class="q-btn" data-q="3">3Q</button>
+          <button class="q-btn" data-q="4">4Q</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="board-container">
+      <div class="board" id="timetable-board">
+        <!-- Generated by JS -->
+      </div>
+    </div>
+    
+    <div class="other-courses" id="intensive-board">
+      <h2>集中講義・その他</h2>
+      <ul id="intensive-list"></ul>
+    </div>
+  </div>
+  
+  <footer>
+    <p>非公式データ。最新の訂正は大学公式で確認すること。</p>
+    <p id="generated-at-footer"></p>
+  </footer>
+
+  <dialog id="dept-dialog">
+    <div class="dialog-content">
+      <h2>学科を選択してください</h2>
+      <p style="margin-bottom: 16px; font-size: 0.9rem; color: #666;">あなたの学科に最適化された時間割を表示します。</p>
+      <select id="dialog-dept-select"></select>
+      <button id="dialog-submit">決定</button>
+    </div>
+  </dialog>
+
+  <dialog id="course-picker-dialog">
+    <div class="dialog-content">
+      <h2 id="picker-header">月曜1限 の講義</h2>
+      <div style="display: flex; gap: 8px; margin-bottom: 12px;">
+        <select id="picker-dept-select" style="flex: 1; margin-bottom: 0;"></select>
+        <button id="picker-show-all-btn" class="secondary" style="width: auto; padding: 8px; margin: 0; white-space: nowrap;">全件表示</button>
+      </div>
+      <div class="picker-list" id="picker-list"></div>
+      <button id="picker-close" class="secondary">閉じる</button>
+    </div>
+  </dialog>
+
+  <dialog id="course-details-dialog">
+    <div class="dialog-content">
+      <h2 id="details-title"></h2>
+      <div id="details-body" style="margin-bottom: 12px; font-size: 0.95rem; color: #333; line-height: 1.5;"></div>
+      
+      <div style="margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+        <label for="details-credits" style="font-weight: bold; font-size: 0.9rem;">単位数:</label>
+        <input type="number" id="details-credits" step="0.5" min="0" style="width: 80px; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">
+      </div>
+
+      <div class="details-memo">
+        <label style="display:block; font-weight:bold; margin-bottom:4px; font-size:0.9rem;">メモ</label>
+        <textarea id="details-memo-text" placeholder="教室の変更や課題のメモ..."></textarea>
+        <div class="memo-status" id="memo-status"></div>
+      </div>
+      
+      <button id="details-swap" class="secondary">このコマの別の講義に変更</button>
+      <button id="details-remove" class="danger">この講義を外す</button>
+      <button id="details-close" class="secondary" style="border:none; margin-top:16px;">閉じる</button>
+    </div>
+  </dialog>
+
+  <script>
+    // F-08: Storage Wrapper
+    class Store {
+      constructor(key) {
+        this.key = key;
+        this.memory = {
+          dept: "",
+          quarter: 1,
+          enrolled: [],
+          memos: {},
+          customCredits: {}
+        };
+        this.isFallback = false;
+        this.load();
+      }
+
+      load() {
+        try {
+          const item = localStorage.getItem(this.key);
+          if (item) {
+            this.memory = JSON.parse(item);
+          }
+        } catch (e) {
+          this.isFallback = true;
+          document.getElementById('local-storage-warning').style.display = 'block';
+        }
+      }
+
+      save() {
+        try {
+          if (!this.isFallback) {
+            localStorage.setItem(this.key, JSON.stringify(this.memory));
+          }
+        } catch (e) {
+          this.isFallback = true;
+          document.getElementById('local-storage-warning').style.display = 'block';
+        }
+      }
+
+      get state() {
+        return this.memory;
+      }
+      
+      update(newState) {
+        this.memory = { ...this.memory, ...newState };
+        this.save();
+      }
+
+      addCourse(id) {
+        if (!this.memory.enrolled.includes(id)) {
+          this.memory.enrolled.push(id);
+          this.save();
+        }
+      }
+
+      removeCourse(id) {
+        this.memory.enrolled = this.memory.enrolled.filter(cid => cid !== id);
+        this.save();
+      }
+
+      updateMemo(id, text) {
+        if (!this.memory.memos) this.memory.memos = {};
+        this.memory.memos[id] = text;
+        this.save();
+      }
+
+      updateCredit(id, credit) {
+        if (!this.memory.customCredits) this.memory.customCredits = {};
+        this.memory.customCredits[id] = credit;
+        this.save();
+      }
+    }
+
+    const STATE_KEY = 'tcu-tt.v1.state';
+    const store = new Store(STATE_KEY);
+    
+    // Globals
+    let coursesData = null;
+    let periodsData = null;
+    const DAYS = ['月', '火', '水', '木', '金', '土'];
+    
+    async function init() {
+      try {
+        const [cRes, pRes] = await Promise.all([
+          fetch('./data/courses.json'),
+          fetch('./config/periods.json')
+        ]);
+        coursesData = await cRes.json();
+        periodsData = await pRes.json();
+        
+        // 未知のIDをパージ
+        const validIds = new Set(coursesData.courses.map(c => c.id));
+        const validEnrolled = store.state.enrolled.filter(id => validIds.has(id));
+        const validMemos = {};
+        for (const [id, memo] of Object.entries(store.state.memos || {})) {
+          if (validIds.has(id)) validMemos[id] = memo;
+        }
+        if (validEnrolled.length !== store.state.enrolled.length || Object.keys(validMemos).length !== Object.keys(store.state.memos || {}).length) {
+          store.update({ enrolled: validEnrolled, memos: validMemos });
+        }
+        
+        document.getElementById('generated-at-footer').textContent = 
+          `データ生成: ${new Date(coursesData.meta.generatedAt).toLocaleString('ja-JP')}`;
+        
+        setupEvents();
+        
+        // 削除: デモデータの自動登録
+        if (!store.state.dept) {
+          showDeptDialog();
+        } else {
+          renderAll();
+        }
+      } catch (err) {
+        console.error("Data load failed", err);
+        const board = document.getElementById('timetable-board');
+        if (board) {
+          board.style.display = 'block';
+          board.innerHTML = '<div style="padding: 32px; text-align: center; color: #d32f2f; font-weight: bold;">エラー: データを読み込めませんでした。<br>ローカルファイル（file://）から直接開いている場合、ブラウザのセキュリティ制限（CORS）でブロックされます。<br>ターミナルで <code>python -m http.server</code> 等を実行し、ローカルサーバー経由でアクセスしてください。</div>';
+        }
+      }
+    }
+
+    function setupEvents() {
+      document.querySelectorAll('.q-btn').forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          const q = parseInt(e.target.getAttribute('data-q'));
+          store.update({ quarter: q });
+          renderAll();
+        });
+      });
+      
+      document.getElementById('header-dept-select').addEventListener('change', (e) => {
+        store.update({ dept: e.target.value });
+        renderAll();
+      });
+      
+      document.getElementById('dialog-submit').addEventListener('click', () => {
+        const val = document.getElementById('dialog-dept-select').value;
+        store.update({ dept: val });
+        document.getElementById('dept-dialog').close();
+        renderAll();
+      });
+    }
+
+    function showDeptDialog() {
+      const select = document.getElementById('dialog-dept-select');
+      populateDeptSelect(select, "");
+      document.getElementById('dept-dialog').showModal();
+    }
+
+    function populateDeptSelect(selectEl, currentDept) {
+      selectEl.innerHTML = '';
+      
+      if (currentDept) {
+        const ownGroup = document.createElement('optgroup');
+        ownGroup.label = "あなたの学科";
+        const ownOpt = document.createElement('option');
+        ownOpt.value = currentDept;
+        ownOpt.textContent = coursesData.departments.find(d => d.code === currentDept)?.name || currentDept;
+        ownGroup.appendChild(ownOpt);
+        selectEl.appendChild(ownGroup);
+      }
+      
+      const commonGroup = document.createElement('optgroup');
+      commonGroup.label = "共通・教養";
+      
+      const otherGroup = document.createElement('optgroup');
+      otherGroup.label = "その他";
+      
+      coursesData.departments.forEach(dept => {
+        if (dept.code === currentDept) return;
+        const opt = document.createElement('option');
+        opt.value = dept.code;
+        opt.textContent = dept.name;
+        
+        if (dept.code === '共通') {
+          commonGroup.appendChild(opt);
+        } else {
+          otherGroup.appendChild(opt);
+        }
+      });
+      
+      selectEl.appendChild(commonGroup);
+      selectEl.appendChild(otherGroup);
+      
+      selectEl.value = currentDept || coursesData.departments[0].code;
+    }
+
+    function updateQuarterUI() {
+      const q = store.state.quarter || 1;
+      document.querySelectorAll('.q-btn').forEach(btn => {
+        btn.setAttribute('aria-current', btn.getAttribute('data-q') == q ? 'true' : 'false');
+      });
+      
+      document.documentElement.style.setProperty('--q-color', `var(--q${q}-color)`);
+      document.getElementById('dialog-submit').style.backgroundColor = `var(--q${q}-color)`;
+    }
+
+    function renderTotalCredits() {
+      let qTotals = [0, 0, 0, 0];
+      
+      store.state.enrolled.forEach(id => {
+        const c = coursesData.courses.find(x => x.id === id);
+        if (c) {
+          let credit = 1.0;
+          if (store.state.customCredits && store.state.customCredits[id] !== undefined) {
+            credit = parseFloat(store.state.customCredits[id]);
+          } else {
+            credit = parseFloat(c.credits || 1.0);
+          }
+          
+          if (c.quarters && c.quarters.length > 0) {
+            const perQ = credit / c.quarters.length;
+            c.quarters.forEach(q => {
+              if (q >= 1 && q <= 4) qTotals[q - 1] += perQ;
+            });
+          }
+        }
+      });
+      
+      const total = qTotals.reduce((a, b) => a + b, 0);
+      const el = document.getElementById('total-credits');
+      if (el) {
+        el.innerHTML = `1Q: <span style="color:var(--q1-color)">${qTotals[0].toFixed(1)}</span> | ` +
+                       `2Q: <span style="color:var(--q2-color)">${qTotals[1].toFixed(1)}</span> | ` +
+                       `3Q: <span style="color:var(--q3-color)">${qTotals[2].toFixed(1)}</span> | ` +
+                       `4Q: <span style="color:var(--q4-color)">${qTotals[3].toFixed(1)}</span> <br> ` +
+                       `合計: <strong>${total.toFixed(1)}</strong>`;
+      }
+    }
+
+    function renderBoard() {
+      const board = document.getElementById('timetable-board');
+      board.innerHTML = '';
+      
+      board.appendChild(createDiv('board-header', ''));
+      DAYS.forEach(day => board.appendChild(createDiv('board-header', day)));
+      
+      const q = store.state.quarter || 1;
+      const slotMap = {};
+      const intensives = [];
+      
+      const currentCourses = coursesData.courses.filter(c => 
+        store.state.enrolled.includes(c.id) && c.quarters.includes(q)
+      );
+      
+      currentCourses.forEach(c => {
+        if (c.intensive || c.slots.length === 0) {
+          intensives.push(c);
+        } else {
+          c.slots.forEach(s => {
+            const key = `${s.period}-${s.day}`;
+            if (!slotMap[key]) slotMap[key] = [];
+            slotMap[key].push({ course: c, room: s.room });
+          });
+        }
+      });
+      
+      const numPeriods = periodsData.periods.length;
+      for (let p = 1; p <= numPeriods; p++) {
+        const periodHeader = createDiv('board-cell period-col', p.toString());
+        board.appendChild(periodHeader);
+        
+        DAYS.forEach(day => {
+          const cell = createDiv('board-cell', '');
+          const key = `${p}-${day}`;
+          if (slotMap[key] && slotMap[key].length > 0) {
+            slotMap[key].forEach(info => {
+              const card = document.createElement('div');
+              card.className = 'course-card';
+              card.innerHTML = `
+                <div class="course-title">${escapeHTML(info.course.title)}</div>
+                <div class="course-room">${escapeHTML(info.room || info.course.room || '')}</div>
+              `;
+              card.addEventListener('click', () => openDetails(info.course.id, p, day));
+              cell.appendChild(card);
+            });
+            if (slotMap[key].length > 1) {
+              cell.style.backgroundColor = '#ffebee';
+              const warn = document.createElement('div');
+              warn.style.color = '#d32f2f';
+              warn.style.fontSize = '0.8rem';
+              warn.style.fontWeight = 'bold';
+              warn.textContent = `重複 ${slotMap[key].length}件`;
+              cell.appendChild(warn);
+            }
+          } else {
+            const addBtn = document.createElement('button');
+            addBtn.innerHTML = '＋';
+            addBtn.style.cssText = 'width:100%; height:100%; min-height:80px; background:transparent; border:1px dashed #ccc; color:#aaa; font-size:1.5rem; cursor:pointer; border-radius:4px; transition:0.2s;';
+            addBtn.onmouseover = () => addBtn.style.backgroundColor = 'rgba(0,0,0,0.02)';
+            addBtn.onmouseout = () => addBtn.style.backgroundColor = 'transparent';
+            addBtn.addEventListener('click', () => openPicker(day, p));
+            cell.appendChild(addBtn);
+          }
+          board.appendChild(cell);
+        });
+      }
+      
+      renderIntensive();
+    }
+
+    function renderIntensive() {
+      const intensiveList = document.getElementById('intensive-list');
+      intensiveList.innerHTML = '';
+      const q = store.state.quarter || 1;
+      const intensives = coursesData.courses.filter(c => 
+        store.state.enrolled.includes(c.id) && c.quarters.includes(q) && (c.intensive || c.slots.length === 0)
+      );
+      intensives.forEach(c => {
+        const li = document.createElement('li');
+        li.style.cssText = 'margin-bottom:8px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid #eee; padding-bottom:8px;';
+        const text = document.createElement('span');
+        text.textContent = `${c.title} (${c.termRaw})`;
+        text.style.cursor = 'pointer';
+        text.addEventListener('click', () => openDetails(c.id, null, null));
+        li.appendChild(text);
+        intensiveList.appendChild(li);
+      });
+      const addIntensiveBtn = document.createElement('button');
+      addIntensiveBtn.textContent = '＋ 集中講義・未定科目を追加';
+      addIntensiveBtn.style.cssText = 'width:100%; padding:8px; background:transparent; border:1px dashed #ccc; color:#666; cursor:pointer; margin-top:8px; border-radius:4px;';
+      addIntensiveBtn.addEventListener('click', () => openPicker(null, null));
+      intensiveList.appendChild(addIntensiveBtn);
+    }
+
+    function renderAll() {
+      populateDeptSelect(document.getElementById('header-dept-select'), store.state.dept);
+      updateQuarterUI();
+      renderBoard();
+      renderTotalCredits();
+    }
+    
+    function createDiv(className, text) {
+      const div = document.createElement('div');
+      div.className = className;
+      div.textContent = text;
+      return div;
+    }
+    
+    function escapeHTML(str) {
+      return String(str)
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+    
+    let memoTimer = null;
+    let currentDetailCourseId = null;
+    let currentSwapTarget = null;
+    
+    function openPicker(day, p) {
+      const q = store.state.quarter || 1;
+      let candidates = [];
+      
+      if (day && p) {
+        document.getElementById('picker-header').textContent = `${day}曜${p}限 の講義を追加`;
+        currentSwapTarget = { day, p };
+        candidates = coursesData.courses.filter(c => 
+          c.quarters.includes(q) && 
+          !c.intensive &&
+          c.slots.some(s => s.day === day && s.period === p)
+        );
+      } else {
+        document.getElementById('picker-header').textContent = `集中講義・未定科目 を追加`;
+        currentSwapTarget = null;
+        candidates = coursesData.courses.filter(c => 
+          c.quarters.includes(q) && (c.intensive || c.slots.length === 0)
+        );
+      }
+      
+      const select = document.getElementById('picker-dept-select');
+      populateDeptSelect(select, store.state.dept);
+      
+      let showAll = false;
+      const showAllBtn = document.getElementById('picker-show-all-btn');
+      showAllBtn.textContent = '全件表示';
+      
+      function renderList() {
+        const list = document.getElementById('picker-list');
+        list.innerHTML = '';
+        
+        const targetDept = showAll ? null : select.value;
+        const filtered = candidates.filter(c => {
+          if (!targetDept) return true;
+          if (targetDept === '共通') return c.dept === '共通';
+          return c.dept === targetDept || c.dept === '共通';
+        });
+        
+        const unique = Array.from(new Map(filtered.map(c => [c.id, c])).values());
+        
+        if (unique.length === 0) {
+          list.innerHTML = '<div style="padding:16px; color:#999; text-align:center;">該当する講義がありません</div>';
+          return;
+        }
+        
+        unique.forEach(c => {
+          const item = document.createElement('div');
+          item.className = 'picker-item';
+          
+          let metaText = `${c.dept} | ${c.teachers.join(', ')}`;
+          if (day && p) {
+            const slot = c.slots.find(s => s.day === day && s.period === p);
+            if (slot && slot.room) metaText += ` | ${slot.room}`;
+          }
+          
+          item.innerHTML = `
+            <div class="picker-item-title">${escapeHTML(c.title)}</div>
+            <div class="picker-item-meta">${escapeHTML(metaText)}</div>
+            ${store.state.enrolled.includes(c.id) ? '<div style="font-size:0.8rem; color:#d32f2f; margin-top:4px;">※登録済み</div>' : ''}
+          `;
+          
+          item.addEventListener('click', () => {
+            store.addCourse(c.id);
+            document.getElementById('course-picker-dialog').close();
+            if (currentDetailCourseId && currentSwapTarget) {
+              store.removeCourse(currentDetailCourseId);
+              document.getElementById('course-details-dialog').close();
+              currentDetailCourseId = null;
+            }
+            renderAll();
+          });
+          
+          list.appendChild(item);
+        });
+      }
+      
+      select.onchange = () => { showAll = false; showAllBtn.textContent = '全件表示'; renderList(); };
+      showAllBtn.onclick = () => { showAll = !showAll; showAllBtn.textContent = showAll ? '絞り込み' : '全件表示'; renderList(); };
+      
+      renderList();
+      document.getElementById('course-picker-dialog').showModal();
+    }
+    
+    function openDetails(id, p, day) {
+      const c = coursesData.courses.find(x => x.id === id);
+      if (!c) return;
+      
+      currentDetailCourseId = id;
+      document.getElementById('details-title').textContent = c.title;
+      
+      let metaHtml = `
+        <span>${escapeHTML(c.code)}</span>
+        <span>${escapeHTML(c.dept)}</span>
+        <span>${escapeHTML(c.termRaw)}</span>
+        ${c.paired ? `<span style="background:#e3f2fd; color:#1565c0;">対開講</span>` : ''}
+        <div style="margin-top:8px;"><strong>教室:</strong> ${escapeHTML((c.rooms || []).length > 0 ? c.slots.map(s => `${s.day}${s.period}: ${s.room}`).join(' / ') : (c.room || '未定/なし'))}</div>
+        <div><strong>教員:</strong> ${escapeHTML(c.teachers.join(', '))}</div>
+        <br><strong>対象:</strong> ${c.target || '-'}
+        <br><strong>備考:</strong> ${c.note || '-'}
+      `;
+      
+      document.getElementById('details-body').innerHTML = metaHtml;
+      
+      const creditsInput = document.getElementById('details-credits');
+      creditsInput.value = store.state.customCredits?.[id] ?? (c.credits || 1.0);
+      creditsInput.onchange = (e) => {
+        const val = parseFloat(e.target.value);
+        if (!isNaN(val)) {
+          store.updateCredit(id, val);
+          renderTotalCredits();
+        }
+      };
+      
+      const memoArea = document.getElementById('details-memo-text');
+      memoArea.value = store.state.memos[id] || '';
+      document.getElementById('memo-status').textContent = '';
+      
+      memoArea.oninput = (e) => {
+        clearTimeout(memoTimer);
+        document.getElementById('memo-status').textContent = '入力中...';
+        document.getElementById('memo-status').style.color = '#999';
+        
+        memoTimer = setTimeout(() => {
+          store.updateMemo(id, e.target.value);
+          const now = new Date();
+          document.getElementById('memo-status').textContent = `保存しました (${now.getHours().toString().padStart(2, '0')}:${now.getMinutes().toString().padStart(2, '0')}:${now.getSeconds().toString().padStart(2, '0')})`;
+          document.getElementById('memo-status').style.color = '#669900';
+        }, 400);
+      };
+      
+      const swapBtn = document.getElementById('details-swap');
+      if (day && p) {
+        swapBtn.style.display = 'block';
+        swapBtn.onclick = () => {
+          openPicker(day, p);
+        };
+      } else {
+        swapBtn.style.display = 'none';
+      }
+      
+      document.getElementById('details-remove').onclick = () => {
+        store.removeCourse(id);
+        document.getElementById('course-details-dialog').close();
+        renderAll();
+      };
+      
+      document.getElementById('course-details-dialog').showModal();
+    }
+    
+    // Close events
+    document.getElementById('picker-close').addEventListener('click', () => {
+      document.getElementById('course-picker-dialog').close();
+    });
+    document.getElementById('details-close').addEventListener('click', () => {
+      document.getElementById('course-details-dialog').close();
+    });
+
+    document.addEventListener('DOMContentLoaded', init);
+  </script>
+</body>
+</html>
