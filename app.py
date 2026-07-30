@@ -10,7 +10,11 @@ from reportlab.pdfbase.cidfonts import UnicodeCIDFont
 from reportlab.pdfbase.pdfmetrics import stringWidth
 
 app = Flask(__name__)
-app.secret_key = os.environ.get("SECRET_KEY", "change-me-secret")
+_REQUIRED_ENV = ["SECRET_KEY", "GOOGLE_CLIENT_ID", "GOOGLE_CLIENT_SECRET"]
+_missing = [k for k in _REQUIRED_ENV if not os.environ.get(k)]
+if _missing:
+    raise RuntimeError(f"必須の環境変数が未設定です: {', '.join(_missing)}")
+app.secret_key = os.environ["SECRET_KEY"]
 
 os.environ['OAUTHLIB_INSECURE_TRANSPORT'] = '1'
 from werkzeug.middleware.proxy_fix import ProxyFix

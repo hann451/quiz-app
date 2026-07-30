@@ -1,5 +1,13 @@
 # デプロイ後 手動確認チェックリスト
 
+## デプロイ手順（2026-07 確立）
+1. 変更はすべてWindows（C:\Users\miyamoto\quiz-app）で行う。Piでは編集しない
+2. `.\deploy-wiki.ps1` を実行（ビルド→commit→push）
+3. Piのsystemdタイマー wiki-deploy.timer が3分以内に自動pull
+4. **wiki配下の変更のみ自動反映。app.py 等のPythonコードを変更した場合は
+   `sudo systemctl restart flask-app.service` を手動実行すること**
+5. 確認は必ずシークレットウィンドウで行う（ブラウザキャッシュ対策）
+
 本番環境（Raspberry Pi / VPS）へデプロイした後に、以下の項目を上から順に確認してください。
 
 ## 1. Wikiトップページの表示
