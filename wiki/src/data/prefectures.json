@@ -829,6 +829,31 @@
       { "name": "古市尊", "year": 2018, "pos": "捕", "star": 144, "dlc": false, "memo": "捕手" }
     ]
   },
+  "38": {
+    "slug": "ehime", "name": "愛媛県", "region": "四国",
+    "schools": 3, "games": 5, "proTeam": null,
+    "recommend": 2,
+    "note": "参加校数★3・予選5試合と難易度は低いが、最高が岩村明憲★293で★300超はゼロ。投手は7人いるものの平井正史（DLC）★271が最上位で層は薄い。捕手は矢野泰二郎★125の1人のみ",
+    "complete": true,
+    "ob": [
+      { "name": "岩村明憲", "year": 1994, "pos": "三", "star": 293, "dlc": false, "memo": "愛媛最強" },
+      { "name": "平井正史（DLC）", "year": 1991, "pos": "投", "star": 271, "dlc": true, "memo": "愛媛の投手では最上位。通常版より★41高い" },
+      { "name": "高井保弘", "year": 1960, "pos": "一", "star": 264, "dlc": false, "memo": "" },
+      { "name": "藤原満", "year": 1962, "pos": "三", "star": 256, "dlc": false, "memo": "" },
+      { "name": "櫻井頼之介", "year": 2019, "pos": "投", "star": 233, "dlc": false, "memo": "現役世代の最上位" },
+      { "name": "平井正史", "year": 1991, "pos": "投", "star": 230, "dlc": false, "memo": "" },
+      { "name": "アドゥワ誠", "year": 2014, "pos": "投", "star": 216, "dlc": false, "memo": "" },
+      { "name": "水口栄二", "year": 1984, "pos": "二", "star": 208, "dlc": false, "memo": "" },
+      { "name": "糸川亮太", "year": 2014, "pos": "投", "star": 199, "dlc": false, "memo": "" },
+      { "name": "佐野重樹", "year": 1984, "pos": "投", "star": 197, "dlc": false, "memo": "" },
+      { "name": "宇都宮葵星", "year": 2020, "pos": "二", "star": 194, "dlc": false, "memo": "" },
+      { "name": "藤田学", "year": 1971, "pos": "投", "star": 192, "dlc": false, "memo": "" },
+      { "name": "山崎太陽", "year": 2019, "pos": "投", "star": 173, "dlc": false, "memo": "" },
+      { "name": "熊代聖人", "year": 2005, "pos": "外", "star": 166, "dlc": false, "memo": "" },
+      { "name": "有馬惠叶", "year": 2022, "pos": "投", "star": 163, "dlc": false, "memo": "" },
+      { "name": "矢野泰二郎", "year": 2018, "pos": "捕", "star": 125, "dlc": false, "memo": "捕手。愛媛唯一の捕手だが★は低い" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
