@@ -4159,24 +4159,296 @@
     "games": 5,
     "proTeam": null,
     "recommend": 4,
-    "note": "今作最強クラスの捕手・野村克也がいる。強投手以外で始めたい人向け",
+    "note": "参加校数★3・予選5試合と入りやすい。今作最強クラスの捕手・野村克也★344が最大の目玉で、金特「球界の頭脳」「ささやき戦術」により1年目から投手を大きく支えられる。衣笠祥雄★304・斉藤和巳★297と投打も揃うが、36人と母数が多く狙い撃ちには周回が必要",
     "complete": true,
     "ob": [
       {
         "name": "野村克也",
         "year": 1951,
         "pos": "捕",
-        "star": null,
+        "star": 344,
         "dlc": true,
-        "memo": "金特「球界の頭脳」「ささやき戦術」。チャンスB・威圧感も優秀"
+        "memo": "京都最強。金特「球界の頭脳」「ささやき戦術」。古田の上位互換的な性能。DLC限定"
+      },
+      {
+        "name": "糸井嘉男（DLC）",
+        "year": 1997,
+        "pos": "外",
+        "star": 316,
+        "dlc": true,
+        "memo": "通常版より★46高い"
+      },
+      {
+        "name": "衣笠祥雄",
+        "year": 1962,
+        "pos": "三",
+        "star": 304,
+        "dlc": false,
+        "memo": "DLCなしで引ける最上位"
+      },
+      {
+        "name": "斉藤和巳",
+        "year": 1993,
+        "pos": "投",
+        "star": 297,
+        "dlc": false,
+        "memo": "京都の投手では最上位"
       },
       {
         "name": "吉田義男",
         "year": 1949,
         "pos": "遊",
-        "star": null,
+        "star": 287,
         "dlc": true,
-        "memo": "金特「魔術師」。初期ステータスも高い"
+        "memo": "金特「魔術師」。DLC限定"
+      },
+      {
+        "name": "北山亘基",
+        "year": 2015,
+        "pos": "投",
+        "star": 286,
+        "dlc": false,
+        "memo": "現役世代の最上位"
+      },
+      {
+        "name": "平野佳寿（DLC）",
+        "year": 1999,
+        "pos": "投",
+        "star": 281,
+        "dlc": true,
+        "memo": "通常版より★63高い"
+      },
+      {
+        "name": "桑原将志",
+        "year": 2009,
+        "pos": "外",
+        "star": 278,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "伊藤智仁",
+        "year": 1986,
+        "pos": "投",
+        "star": 275,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "糸井嘉男",
+        "year": 1997,
+        "pos": "外",
+        "star": 270,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "波留敏夫",
+        "year": 1986,
+        "pos": "外",
+        "star": 254,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "西川史礁",
+        "year": 2018,
+        "pos": "外",
+        "star": 253,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "山本祐大",
+        "year": 2014,
+        "pos": "捕",
+        "star": 246,
+        "dlc": false,
+        "memo": "捕手。DLCなしで引ける捕手の最上位"
+      },
+      {
+        "name": "岡本伊三美",
+        "year": 1946,
+        "pos": "二",
+        "star": 239,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "赤松真人",
+        "year": 1998,
+        "pos": "外",
+        "star": 238,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "中島大輔",
+        "year": 2017,
+        "pos": "外",
+        "star": 236,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "大野雄大",
+        "year": 2004,
+        "pos": "投",
+        "star": 231,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "高橋奎二",
+        "year": 2013,
+        "pos": "投",
+        "star": 229,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "近藤和彦",
+        "year": 1951,
+        "pos": "外",
+        "star": 227,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "桧山進次郎",
+        "year": 1985,
+        "pos": "外",
+        "star": 217,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "岩井俊介",
+        "year": 2017,
+        "pos": "投",
+        "star": 216,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "阪本敏三",
+        "year": 1959,
+        "pos": "遊",
+        "star": 215,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "平野佳寿",
+        "year": 1999,
+        "pos": "投",
+        "star": 218,
+        "dlc": false,
+        "memo": "DLC版との差が63と大きい"
+      },
+      {
+        "name": "酒居知史",
+        "year": 2008,
+        "pos": "投",
+        "star": 211,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "斉藤明夫",
+        "year": 1970,
+        "pos": "投",
+        "star": 207,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "炭谷銀仁朗",
+        "year": 2003,
+        "pos": "捕",
+        "star": 199,
+        "dlc": false,
+        "memo": "捕手"
+      },
+      {
+        "name": "上茶谷大河",
+        "year": 2012,
+        "pos": "投",
+        "star": 198,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "小野寺暖",
+        "year": 2013,
+        "pos": "外",
+        "star": 196,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "中川勇斗",
+        "year": 2019,
+        "pos": "捕",
+        "star": 191,
+        "dlc": false,
+        "memo": "捕手"
+      },
+      {
+        "name": "岡田悠希",
+        "year": 2015,
+        "pos": "外",
+        "star": 190,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "石原彪",
+        "year": 2014,
+        "pos": "捕",
+        "star": 183,
+        "dlc": false,
+        "memo": "捕手"
+      },
+      {
+        "name": "大隣憲司",
+        "year": 2000,
+        "pos": "投",
+        "star": 181,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "西村瑠伊斗",
+        "year": 2020,
+        "pos": "一",
+        "star": 178,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "岡島秀樹",
+        "year": 1991,
+        "pos": "投",
+        "star": 170,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "緒方理貢",
+        "year": 2014,
+        "pos": "外",
+        "star": 165,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "島本浩也",
+        "year": 2008,
+        "pos": "投",
+        "star": 156,
+        "dlc": false,
+        "memo": ""
       }
     ]
   },
