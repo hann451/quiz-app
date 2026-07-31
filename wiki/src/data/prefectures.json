@@ -8878,24 +8878,176 @@
     "games": 5,
     "proTeam": null,
     "recommend": 4,
-    "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい",
+    "note": "参加校数★2・予選5試合と難易度が低く、青木宣親★333・北別府学★308・山本由伸★302と★300超が3人。しかも全員DLC不要で引ける。21人と母数も程よい。捕手は岡村了樹★163の1人だけが弱点",
     "complete": true,
     "ob": [
+      {
+        "name": "青木宣親",
+        "year": 1997,
+        "pos": "外",
+        "star": 333,
+        "dlc": false,
+        "memo": "宮崎最強。DLC不要"
+      },
+      {
+        "name": "北別府学",
+        "year": 1973,
+        "pos": "投",
+        "star": 308,
+        "dlc": false,
+        "memo": "コントロール・スタミナともC。変化球4種。DLC不要"
+      },
       {
         "name": "山本由伸",
         "year": 2014,
         "pos": "投",
         "star": 302,
         "dlc": false,
-        "memo": "初期145km/h。青特が多い"
+        "memo": "初期145km/h。青特が多い。「山本由伸→平良海馬→戸郷翔征」ラインの起点"
       },
       {
-        "name": "北別府学",
-        "year": 1973,
+        "name": "黒木知宏（DLC）",
+        "year": 1989,
         "pos": "投",
-        "star": null,
+        "star": 271,
         "dlc": true,
-        "memo": "コン・スタミナともC。変化球4種"
+        "memo": "通常版より★59高い"
+      },
+      {
+        "name": "田中幸雄",
+        "year": 1983,
+        "pos": "遊",
+        "star": 261,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "廣池康志郎",
+        "year": 2018,
+        "pos": "投",
+        "star": 255,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "西村徳文",
+        "year": 1975,
+        "pos": "外",
+        "star": 251,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "福良淳一",
+        "year": 1976,
+        "pos": "二",
+        "star": 228,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "藤川敦也",
+        "year": 2023,
+        "pos": "投",
+        "star": 218,
+        "dlc": false,
+        "memo": "最新世代"
+      },
+      {
+        "name": "戸郷翔征",
+        "year": 2016,
+        "pos": "投",
+        "star": 215,
+        "dlc": false,
+        "memo": "DLCなしの3年ループで3年目に使われる投手"
+      },
+      {
+        "name": "黒木知宏",
+        "year": 1989,
+        "pos": "投",
+        "star": 212,
+        "dlc": false,
+        "memo": "DLC版との差が59と大きい"
+      },
+      {
+        "name": "中﨑翔太",
+        "year": 2008,
+        "pos": "投",
+        "star": 197,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "ケムナ誠",
+        "year": 2011,
+        "pos": "投",
+        "star": 194,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "横山楓",
+        "year": 2013,
+        "pos": "投",
+        "star": 192,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "小幡竜平",
+        "year": 2016,
+        "pos": "遊",
+        "star": 192,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "武田翔太",
+        "year": 2009,
+        "pos": "投",
+        "star": 191,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "日髙暖己",
+        "year": 2020,
+        "pos": "投",
+        "star": 185,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "武藤敦貴",
+        "year": 2017,
+        "pos": "外",
+        "star": 174,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "井上祐二",
+        "year": 1978,
+        "pos": "投",
+        "star": 165,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "岡村了樹",
+        "year": 2023,
+        "pos": "捕",
+        "star": 163,
+        "dlc": false,
+        "memo": "捕手。宮崎唯一の捕手"
+      },
+      {
+        "name": "加治屋蓮",
+        "year": 2007,
+        "pos": "投",
+        "star": 154,
+        "dlc": false,
+        "memo": ""
       }
     ]
   },
