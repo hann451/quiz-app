@@ -854,6 +854,35 @@
       { "name": "矢野泰二郎", "year": 2018, "pos": "捕", "star": 125, "dlc": false, "memo": "捕手。愛媛唯一の捕手だが★は低い" }
     ]
   },
+  "39": {
+    "slug": "kochi", "name": "高知県", "region": "四国",
+    "schools": 1, "games": 5, "proTeam": null,
+    "recommend": 3,
+    "note": "参加校数★1・予選5試合と最易クラス。藤川球児★307（DLC版★310）が投手のエース候補。捕手が7人と全県最多で、キャッチャー特能を確保しやすいのが最大の特徴。ただし★は165〜208と低めで、野手全体の火力は乏しい",
+    "complete": true,
+    "ob": [
+      { "name": "藤川球児（DLC）", "year": 1996, "pos": "投", "star": 310, "dlc": true, "memo": "高知最強。通常版との差はわずか3" },
+      { "name": "藤川球児", "year": 1996, "pos": "投", "star": 307, "dlc": false, "memo": "DLCなしでも★307と十分強力" },
+      { "name": "有藤道世", "year": 1962, "pos": "三", "star": 281, "dlc": false, "memo": "高知最強の野手" },
+      { "name": "鹿取義隆（DLC）", "year": 1972, "pos": "投", "star": 247, "dlc": true, "memo": "通常版より★21高い" },
+      { "name": "弘田澄男（DLC）", "year": 1965, "pos": "外", "star": 242, "dlc": true, "memo": "" },
+      { "name": "弘田澄男", "year": 1965, "pos": "外", "star": 236, "dlc": false, "memo": "" },
+      { "name": "鹿取義隆", "year": 1972, "pos": "投", "star": 226, "dlc": false, "memo": "" },
+      { "name": "山沖之彦", "year": 1975, "pos": "投", "star": 219, "dlc": false, "memo": "" },
+      { "name": "江本孟紀", "year": 1963, "pos": "投", "star": 214, "dlc": false, "memo": "" },
+      { "name": "古賀優大", "year": 2014, "pos": "捕", "star": 208, "dlc": false, "memo": "捕手。高知の捕手では最上位" },
+      { "name": "伊藤光", "year": 2005, "pos": "捕", "star": 203, "dlc": false, "memo": "捕手" },
+      { "name": "寺地隆成", "year": 2021, "pos": "捕", "star": 199, "dlc": false, "memo": "捕手" },
+      { "name": "木下拓哉", "year": 2007, "pos": "捕", "star": 196, "dlc": false, "memo": "捕手" },
+      { "name": "岸潤一郎", "year": 2012, "pos": "外", "star": 192, "dlc": false, "memo": "" },
+      { "name": "竹村一義", "year": 1965, "pos": "投", "star": 177, "dlc": false, "memo": "" },
+      { "name": "榮枝裕貴", "year": 2014, "pos": "捕", "star": 171, "dlc": false, "memo": "捕手" },
+      { "name": "嶋村麟士朗", "year": 2019, "pos": "捕", "star": 165, "dlc": false, "memo": "捕手" },
+      { "name": "森岡良介", "year": 2000, "pos": "遊", "star": 157, "dlc": false, "memo": "" },
+      { "name": "藤森海斗", "year": 2023, "pos": "捕", "star": 134, "dlc": false, "memo": "捕手" },
+      { "name": "川田悠慎", "year": 2017, "pos": "外", "star": 103, "dlc": false, "memo": "" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
