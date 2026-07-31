@@ -9232,7 +9232,7 @@
     "games": 5,
     "proTeam": null,
     "recommend": 4,
-    "note": "超強力な投手2人。ただし転生OBの数が多く引ける確率はやや低い",
+    "note": "参加校数★3・予選5試合。宮城大弥★316・平良海馬★312の投手2枚がDLC不要で引ける。23人と母数は程よいが、投手は9人で★300超はこの2人だけ。捕手が3人いるのは強み。「山本由伸→平良海馬→戸郷翔征」のDLC不要3年ループの2年目を担う",
     "complete": true,
     "ob": [
       {
@@ -9241,7 +9241,7 @@
         "pos": "投",
         "star": 316,
         "dlc": false,
-        "memo": "144km/h、コン・スタミナともC。総変化量7が強力"
+        "memo": "沖縄最強。144km/h、コン・スタミナともC。総変化量7が強力"
       },
       {
         "name": "平良海馬",
@@ -9249,7 +9249,175 @@
         "pos": "投",
         "star": 312,
         "dlc": false,
-        "memo": "奪三振・ノビBを持ち青特が非常に優秀"
+        "memo": "奪三振・ノビBを持ち青特が非常に優秀。DLC不要3年ループの2年目"
+      },
+      {
+        "name": "山川穂高",
+        "year": 2007,
+        "pos": "一",
+        "star": 273,
+        "dlc": false,
+        "memo": "通常版のほうがDLC版より★が7高い"
+      },
+      {
+        "name": "石嶺和彦",
+        "year": 1976,
+        "pos": "外",
+        "star": 271,
+        "dlc": false,
+        "memo": "沖縄最強の野手"
+      },
+      {
+        "name": "山川穂高（DLC）",
+        "year": 2007,
+        "pos": "一",
+        "star": 266,
+        "dlc": true,
+        "memo": "通常版より★が7低い"
+      },
+      {
+        "name": "平良竜哉",
+        "year": 2014,
+        "pos": "二",
+        "star": 239,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "伊志嶺翔大",
+        "year": 2004,
+        "pos": "外",
+        "star": 206,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "平良拳太郎",
+        "year": 2011,
+        "pos": "投",
+        "star": 203,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "與座海人",
+        "year": 2011,
+        "pos": "投",
+        "star": 202,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "仲地礼亜",
+        "year": 2016,
+        "pos": "投",
+        "star": 196,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "前田純",
+        "year": 2018,
+        "pos": "投",
+        "star": 196,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "東浜巨",
+        "year": 2006,
+        "pos": "投",
+        "star": 195,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "リチャード",
+        "year": 2015,
+        "pos": "三",
+        "star": 188,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "大城滉二",
+        "year": 2009,
+        "pos": "遊",
+        "star": 183,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "嶺井博希",
+        "year": 2007,
+        "pos": "捕",
+        "star": 176,
+        "dlc": false,
+        "memo": "捕手。沖縄の捕手では最上位"
+      },
+      {
+        "name": "山城京平",
+        "year": 2019,
+        "pos": "投",
+        "star": 174,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "岡留英貴",
+        "year": 2015,
+        "pos": "投",
+        "star": 169,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "神里和毅",
+        "year": 2009,
+        "pos": "外",
+        "star": 164,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "小濱佑斗",
+        "year": 2017,
+        "pos": "遊",
+        "star": 159,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "龍山暖",
+        "year": 2022,
+        "pos": "捕",
+        "star": 144,
+        "dlc": false,
+        "memo": "捕手"
+      },
+      {
+        "name": "田中貴也",
+        "year": 2008,
+        "pos": "捕",
+        "star": 143,
+        "dlc": false,
+        "memo": "捕手"
+      },
+      {
+        "name": "ワォーターズ 璃海ジュミル",
+        "year": 2021,
+        "pos": "遊",
+        "star": 141,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "仲田侑仁",
+        "year": 2021,
+        "pos": "一",
+        "star": 136,
+        "dlc": false,
+        "memo": ""
       }
     ]
   }
