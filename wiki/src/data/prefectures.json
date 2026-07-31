@@ -3874,6 +3874,139 @@
       }
     ]
   },
+  "17": {
+    "slug": "ishikawa",
+    "name": "石川県",
+    "region": "中部",
+    "schools": 2,
+    "games": 5,
+    "proTeam": null,
+    "recommend": 4,
+    "note": "参加校数★2・予選5試合と難易度が低く、松井秀喜★355がDLC不要で引ける。村松有人★285・角中勝也（DLC）★270と外野が厚い。15人と母数も程よい。ただし投手は寺西成騎★242が最高で層が薄く、エースは別途確保が必要",
+    "complete": true,
+    "ob": [
+      {
+        "name": "松井秀喜",
+        "year": 1990,
+        "pos": "外",
+        "star": 355,
+        "dlc": false,
+        "memo": "石川最強。DLC不要で引ける"
+      },
+      {
+        "name": "村松有人",
+        "year": 1988,
+        "pos": "外",
+        "star": 285,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "角中勝也（DLC）",
+        "year": 2003,
+        "pos": "外",
+        "star": 270,
+        "dlc": true,
+        "memo": "通常版より★17高い"
+      },
+      {
+        "name": "角中勝也",
+        "year": 2003,
+        "pos": "外",
+        "star": 253,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "寺西成騎",
+        "year": 2018,
+        "pos": "投",
+        "star": 242,
+        "dlc": false,
+        "memo": "石川の投手では最上位"
+      },
+      {
+        "name": "奥川恭伸",
+        "year": 2017,
+        "pos": "投",
+        "star": 209,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "泉圭輔",
+        "year": 2012,
+        "pos": "投",
+        "star": 203,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "大谷輝龍",
+        "year": 2016,
+        "pos": "投",
+        "star": 203,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "内山壮真",
+        "year": 2018,
+        "pos": "捕",
+        "star": 201,
+        "dlc": false,
+        "memo": "捕手。石川の捕手では最上位"
+      },
+      {
+        "name": "高須洋介",
+        "year": 1991,
+        "pos": "二",
+        "star": 199,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "齋藤大翔",
+        "year": 2022,
+        "pos": "遊",
+        "star": 186,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "内藤鵬",
+        "year": 2020,
+        "pos": "三",
+        "star": 179,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "谷端将伍",
+        "year": 2019,
+        "pos": "三",
+        "star": 177,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "谷内亮太",
+        "year": 2006,
+        "pos": "三",
+        "star": 172,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "山瀬慎之助",
+        "year": 2017,
+        "pos": "捕",
+        "star": 118,
+        "dlc": false,
+        "memo": "捕手"
+      }
+    ]
+  },
   "23": {
     "slug": "aichi",
     "name": "愛知県",
