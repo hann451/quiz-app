@@ -3805,6 +3805,75 @@
       }
     ]
   },
+  "15": {
+    "slug": "niigata",
+    "name": "新潟県",
+    "region": "中部",
+    "schools": 3,
+    "games": 5,
+    "proTeam": null,
+    "recommend": 1,
+    "note": "転生OBが7人と極端に少なく、最高は滝澤夏央★241で★250超すらゼロ。捕手も1人もいない。参加校数★3・予選5試合と難易度は低いが、戦力面のリターンがほぼ期待できない。母数7人で狙い撃ちしやすい点だけが利点",
+    "complete": true,
+    "ob": [
+      {
+        "name": "滝澤夏央",
+        "year": 2019,
+        "pos": "遊",
+        "star": 241,
+        "dlc": false,
+        "memo": "新潟最強。それでも★241止まり"
+      },
+      {
+        "name": "荘司康誠",
+        "year": 2016,
+        "pos": "投",
+        "star": 238,
+        "dlc": false,
+        "memo": "新潟の投手では最上位タイ"
+      },
+      {
+        "name": "田中晴也",
+        "year": 2020,
+        "pos": "投",
+        "star": 238,
+        "dlc": false,
+        "memo": "新潟の投手では最上位タイ"
+      },
+      {
+        "name": "菊地大稀",
+        "year": 2015,
+        "pos": "投",
+        "star": 219,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "今井雄太郎",
+        "year": 1965,
+        "pos": "投",
+        "star": 217,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "茨木秀俊",
+        "year": 2020,
+        "pos": "投",
+        "star": 206,
+        "dlc": false,
+        "memo": ""
+      },
+      {
+        "name": "小林幹英",
+        "year": 1989,
+        "pos": "投",
+        "star": 196,
+        "dlc": false,
+        "memo": ""
+      }
+    ]
+  },
   "23": {
     "slug": "aichi",
     "name": "愛知県",
