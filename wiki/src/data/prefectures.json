@@ -784,6 +784,29 @@
       { "name": "古賀康誠", "year": 2020, "pos": "投", "star": 165, "dlc": false, "memo": "" }
     ]
   },
+  "36": {
+    "slug": "tokushima", "name": "徳島県", "region": "四国",
+    "schools": 1, "games": 5, "proTeam": null,
+    "recommend": 4,
+    "note": "参加校数★1・予選5試合と全国最易クラス。里崎智也★301という★300超の捕手がいるのが最大の魅力で、キャッチャー特能を序盤から確保できる。長池徳二★293・川上憲伸★290と打投のバランスも良い",
+    "complete": true,
+    "ob": [
+      { "name": "里崎智也", "year": 1992, "pos": "捕", "star": 301, "dlc": false, "memo": "徳島最強。★300超の捕手は全県でも希少" },
+      { "name": "長池徳二", "year": 1959, "pos": "外", "star": 293, "dlc": false, "memo": "" },
+      { "name": "川上憲伸", "year": 1991, "pos": "投", "star": 290, "dlc": false, "memo": "徳島の投手では最上位" },
+      { "name": "武田久", "year": 1994, "pos": "投", "star": 278, "dlc": false, "memo": "" },
+      { "name": "潮崎哲也", "year": 1984, "pos": "投", "star": 261, "dlc": false, "memo": "" },
+      { "name": "岡本駿", "year": 2018, "pos": "投", "star": 254, "dlc": false, "memo": "現役世代の最上位" },
+      { "name": "河野竜生", "year": 2014, "pos": "投", "star": 241, "dlc": false, "memo": "" },
+      { "name": "杉本裕太郎", "year": 2007, "pos": "外", "star": 237, "dlc": false, "memo": "" },
+      { "name": "藤田一也（DLC）", "year": 1998, "pos": "二", "star": 229, "dlc": true, "memo": "通常版より★41高い" },
+      { "name": "野口智哉", "year": 2015, "pos": "遊", "star": 191, "dlc": false, "memo": "" },
+      { "name": "水野雄仁", "year": 1981, "pos": "投", "star": 188, "dlc": false, "memo": "" },
+      { "name": "藤田一也", "year": 1998, "pos": "二", "star": 188, "dlc": false, "memo": "" },
+      { "name": "石上泰輝", "year": 2017, "pos": "遊", "star": 183, "dlc": false, "memo": "" },
+      { "name": "増田大輝", "year": 2009, "pos": "遊", "star": 167, "dlc": false, "memo": "" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
