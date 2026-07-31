@@ -883,6 +883,24 @@
       { "name": "川田悠慎", "year": 2017, "pos": "外", "star": 103, "dlc": false, "memo": "" }
     ]
   },
+  "41": {
+    "slug": "saga", "name": "佐賀県", "region": "九州",
+    "schools": 2, "games": 5, "proTeam": null,
+    "recommend": 2,
+    "note": "転生OBが9人と少なく、【捕手が1人もいない唯一の県】。参加校数★2で難易度は低く、権藤博（DLC）★298がエース候補になるが、DLCなしだと★271が最高。捕手をスカウトや育成で自前調達する前提になる",
+    "complete": true,
+    "ob": [
+      { "name": "権藤博（DLC）", "year": 1954, "pos": "投", "star": 298, "dlc": true, "memo": "佐賀最強。通常版より★27高い" },
+      { "name": "権藤博", "year": 1954, "pos": "投", "star": 271, "dlc": false, "memo": "DLCなしで引ける最上位" },
+      { "name": "辻発彦（DLC）", "year": 1974, "pos": "二", "star": 269, "dlc": true, "memo": "通常版より★15高い" },
+      { "name": "緒方孝市", "year": 1984, "pos": "外", "star": 260, "dlc": false, "memo": "" },
+      { "name": "福地寿樹", "year": 1991, "pos": "外", "star": 259, "dlc": false, "memo": "" },
+      { "name": "辻発彦", "year": 1974, "pos": "二", "star": 254, "dlc": false, "memo": "" },
+      { "name": "加藤博一", "year": 1967, "pos": "外", "star": 212, "dlc": false, "memo": "" },
+      { "name": "宮﨑敏郎", "year": 2004, "pos": "三", "star": 207, "dlc": false, "memo": "" },
+      { "name": "吉田聖弥", "year": 2018, "pos": "投", "star": 198, "dlc": false, "memo": "" }
+    ]
+  },
   "44": {
     "slug": "oita", "name": "大分県", "region": "九州",
     "schools": 2, "games": 5, "proTeam": null,
