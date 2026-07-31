@@ -765,6 +765,25 @@
       { "name": "新保茉良", "year": 2019, "pos": "遊", "star": 123, "dlc": false, "memo": "" }
     ]
   },
+  "35": {
+    "slug": "yamaguchi", "name": "山口県", "region": "中国",
+    "schools": 3, "games": 5, "proTeam": null,
+    "recommend": 2,
+    "note": "転生OBが10人と全県最少。最高は高木豊★280で★300超はゼロ。参加校数★3・予選5試合と難易度は低いが、母数が少なく当たりも小さいため優先度は低い。狙い撃ちのしやすさだけは全県トップクラス",
+    "complete": true,
+    "ob": [
+      { "name": "高木豊", "year": 1974, "pos": "遊", "star": 280, "dlc": false, "memo": "山口最強" },
+      { "name": "津田恒実", "year": 1976, "pos": "投", "star": 270, "dlc": false, "memo": "山口の投手では最上位" },
+      { "name": "山野太一", "year": 2014, "pos": "投", "star": 246, "dlc": false, "memo": "" },
+      { "name": "立石正広", "year": 2019, "pos": "三", "star": 233, "dlc": false, "memo": "" },
+      { "name": "椋木蓮", "year": 2015, "pos": "投", "star": 231, "dlc": false, "memo": "" },
+      { "name": "有田修三", "year": 1967, "pos": "捕", "star": 226, "dlc": false, "memo": "捕手。山口唯一の捕手" },
+      { "name": "森慎二", "year": 1990, "pos": "投", "star": 226, "dlc": false, "memo": "" },
+      { "name": "小森航大郎", "year": 2019, "pos": "遊", "star": 196, "dlc": false, "memo": "" },
+      { "name": "嶋村一輝", "year": 1997, "pos": "二", "star": 183, "dlc": false, "memo": "" },
+      { "name": "古賀康誠", "year": 2020, "pos": "投", "star": 165, "dlc": false, "memo": "" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
