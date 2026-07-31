@@ -115,6 +115,9 @@ const clientDataJson = JSON.stringify(processedGrid);
         </tbody>
       </table>
     </div>
+    <div id="ob-expand-container" class="hidden" style="text-align: center; margin-top: 10px;">
+      <button id="ob-expand-btn" class="badge" style="cursor: pointer;"></button>
+    </div>
   </div>
 
   <div class="fallback-seo-container">
@@ -250,6 +253,24 @@ const clientDataJson = JSON.stringify(processedGrid);
     border-top: 1px dashed #cbd5e1;
   }
   /* モバイルなどでは表を見えなくしても良いが、Pagefind用にはそのまま置く */
+  
+  .ob-hidden {
+    display: none;
+  }
+  #ob-expand-btn {
+    border: none;
+    font-size: 0.95rem;
+    padding: 8px 16px;
+    background-color: #3b82f6;
+    color: white;
+    transition: background-color 0.2s;
+  }
+  #ob-expand-btn:hover {
+    background-color: #2563eb;
+  }
+  #ob-expand-container.hidden {
+    display: none;
+  }
 </style>
 
 <script is:inline define:vars={{ prefData: clientDataJson }}>
@@ -277,9 +298,16 @@ const clientDataJson = JSON.stringify(processedGrid);
       
       // Render table
       tb.innerHTML = '';
+      const expandContainer = document.getElementById('ob-expand-container');
+      const expandBtn = document.getElementById('ob-expand-btn');
+      expandContainer.classList.add('hidden');
+
       if(pref.ob && pref.ob.length > 0) {
-        pref.ob.forEach(ob => {
+        pref.ob.forEach((ob, index) => {
           const tr = document.createElement('tr');
+          if (index >= 10) {
+            tr.classList.add('ob-hidden');
+          }
           tr.innerHTML = `
             <td>${ob.name}</td>
             <td>${ob.year || '-'}</td>
@@ -290,6 +318,12 @@ const clientDataJson = JSON.stringify(processedGrid);
           `;
           tb.appendChild(tr);
         });
+
+        if (pref.ob.length > 10) {
+          expandBtn.textContent = `もっと見る（全${pref.ob.length}人）`;
+          expandBtn.dataset.expanded = 'false';
+          expandContainer.classList.remove('hidden');
+        }
       } else {
         tb.innerHTML = '<tr><td colspan="6">データがありません</td></tr>';
       }
@@ -308,6 +342,26 @@ const clientDataJson = JSON.stringify(processedGrid);
         const slug = e.currentTarget.getAttribute('data-slug');
         renderDetail(slug);
       });
+    });
+
+    // Expand button handler
+    document.getElementById('ob-expand-btn').addEventListener('click', (e) => {
+      const btn = e.target;
+      const isExpanded = btn.dataset.expanded === 'true';
+      const hiddenRows = tb.querySelectorAll('tr:nth-child(n+11)');
+      
+      if (isExpanded) {
+        // 折りたたむ
+        hiddenRows.forEach(tr => tr.classList.add('ob-hidden'));
+        const total = tb.querySelectorAll('tr').length;
+        btn.textContent = `もっと見る（全${total}人）`;
+        btn.dataset.expanded = 'false';
+      } else {
+        // 展開する
+        hiddenRows.forEach(tr => tr.classList.remove('ob-hidden'));
+        btn.textContent = '折りたたむ';
+        btn.dataset.expanded = 'true';
+      }
     });
 
     // Check hash on load
