@@ -1024,6 +1024,35 @@
       { "name": "古川雄大", "year": 2020, "pos": "外", "star": 164, "dlc": false, "memo": "" }
     ]
   },
+  "43": {
+    "slug": "kumamoto", "name": "熊本県", "region": "九州",
+    "schools": 2, "games": 5, "proTeam": null,
+    "recommend": 4,
+    "note": "村上宗隆★335と秋山幸二★331という強力な野手2枚看板が魅力。捕手も伊東勤（DLC）★250がおり、参加校数★2で難易度も低い。ただし投手が全体的に弱く、打高投低になりやすい",
+    "complete": true,
+    "ob": [
+      { "name": "村上宗隆", "year": 2015, "pos": "三", "star": 335, "dlc": false, "memo": "熊本最強。ホームランバッター" },
+      { "name": "秋山幸二", "year": 1978, "pos": "外", "star": 331, "dlc": false, "memo": "走攻守揃った強力な外野手" },
+      { "name": "前田智徳", "year": 1987, "pos": "外", "star": 313, "dlc": false, "memo": "打撃職人" },
+      { "name": "川上哲治", "year": 1936, "pos": "一", "star": 310, "dlc": false, "memo": "打撃の神様" },
+      { "name": "荒木雅博", "year": 1993, "pos": "二", "star": 281, "dlc": false, "memo": "守備・走力に優れる" },
+      { "name": "松中信彦", "year": 1989, "pos": "一", "star": 272, "dlc": false, "memo": "平成の三冠王" },
+      { "name": "伊東勤（DLC）", "year": 1978, "pos": "捕", "star": 250, "dlc": true, "memo": "熊本の捕手で最上位。通常版より★15高い" },
+      { "name": "緒方耕一", "year": 1984, "pos": "外", "star": 249, "dlc": false, "memo": "" },
+      { "name": "アドゥワ大", "year": 2014, "pos": "投", "star": 246, "dlc": false, "memo": "熊本の投手では最上位" },
+      { "name": "馬原孝浩", "year": 1997, "pos": "投", "star": 240, "dlc": false, "memo": "" },
+      { "name": "伊東勤", "year": 1978, "pos": "捕", "star": 235, "dlc": false, "memo": "捕手" },
+      { "name": "山中浩史", "year": 2001, "pos": "投", "star": 218, "dlc": false, "memo": "" },
+      { "name": "立岡宗一郎", "year": 2006, "pos": "外", "star": 218, "dlc": false, "memo": "" },
+      { "name": "中島淳一", "year": 1976, "pos": "投", "star": 214, "dlc": false, "memo": "" },
+      { "name": "大竹耕太郎", "year": 2011, "pos": "投", "star": 213, "dlc": false, "memo": "" },
+      { "name": "九鬼隆平", "year": 2014, "pos": "捕", "star": 183, "dlc": false, "memo": "捕手" },
+      { "name": "溝脇隼人", "year": 2010, "pos": "二", "star": 174, "dlc": false, "memo": "" },
+      { "name": "星子天真", "year": 2020, "pos": "二", "star": 158, "dlc": false, "memo": "" },
+      { "name": "桑原秀侍", "year": 2018, "pos": "投", "star": 149, "dlc": false, "memo": "" },
+      { "name": "百崎蒼生", "year": 2021, "pos": "遊", "star": 144, "dlc": false, "memo": "" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
