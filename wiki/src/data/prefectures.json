@@ -807,6 +807,28 @@
       { "name": "増田大輝", "year": 2009, "pos": "遊", "star": 167, "dlc": false, "memo": "" }
     ]
   },
+  "37": {
+    "slug": "kagawa", "name": "香川県", "region": "四国",
+    "schools": 1, "games": 5, "proTeam": null,
+    "recommend": 2,
+    "note": "参加校数★1と難易度は最易クラスだが、13人中【投手が2人だけ】という極端な構成。転生投手の出現率は全県最下位（約14.2%）で、エース確保をスカウトに頼れない。中西太★318・谷佳知★300と野手は強力なので、打撃型チームを組むなら選択肢",
+    "complete": true,
+    "ob": [
+      { "name": "中西太", "year": 1949, "pos": "三", "star": 318, "dlc": false, "memo": "香川最強。★1の県では破格" },
+      { "name": "谷佳知", "year": 1988, "pos": "外", "star": 300, "dlc": false, "memo": "" },
+      { "name": "島谷金二", "year": 1960, "pos": "三", "star": 252, "dlc": false, "memo": "" },
+      { "name": "野村勇", "year": 2012, "pos": "遊", "star": 243, "dlc": false, "memo": "" },
+      { "name": "伊良部秀輝", "year": 1985, "pos": "投", "star": 242, "dlc": false, "memo": "香川に2人しかいない投手の1人。実質エース候補" },
+      { "name": "岡村浩二", "year": 1956, "pos": "捕", "star": 236, "dlc": false, "memo": "捕手" },
+      { "name": "白井一幸", "year": 1977, "pos": "二", "star": 214, "dlc": false, "memo": "" },
+      { "name": "塹江敦哉", "year": 2012, "pos": "投", "star": 209, "dlc": false, "memo": "香川に2人しかいない投手の1人" },
+      { "name": "水野達稀", "year": 2016, "pos": "遊", "star": 205, "dlc": false, "memo": "" },
+      { "name": "浅野翔吾", "year": 2020, "pos": "外", "star": 203, "dlc": false, "memo": "" },
+      { "name": "末包昇大", "year": 2012, "pos": "外", "star": 185, "dlc": false, "memo": "" },
+      { "name": "松本直樹", "year": 2009, "pos": "捕", "star": 170, "dlc": false, "memo": "捕手" },
+      { "name": "古市尊", "year": 2018, "pos": "捕", "star": 144, "dlc": false, "memo": "捕手" }
+    ]
+  },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
     "ob": [ { "name": "山本由伸", "year": 2014, "pos": "投", "star": 302, "dlc": false, "memo": "初期145km/h。青特が多い" },
             { "name": "北別府学", "year": 1973, "pos": "投", "star": null, "dlc": true, "memo": "コン・スタミナともC。変化球4種" } ] },
