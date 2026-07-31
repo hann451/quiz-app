@@ -26,6 +26,30 @@
       { "name": "成田晴風", "year": 2021, "pos": "投", "star": 170, "dlc": false, "memo": "" },
       { "name": "武岡龍世", "year": 2017, "pos": "遊", "star": 165, "dlc": false, "memo": "" }
     ]
+
+  },
+  "05": {
+    "slug": "akita", "name": "秋田県", "region": "東北",
+    "schools": 2, "games": 5, "proTeam": null,
+    "recommend": 4,
+    "note": "落合博満★373が最大の当たり。投手も石井大智・攝津・山田久志・石山と層が厚く下振れしにくい。参加校数★2で予選5試合と難易度も低い。夏の隠し特訓マスは8月15日組",
+    "complete": true,
+    "ob": [
+      { "name": "落合博満", "year": 1969, "pos": "三", "star": 373, "dlc": false, "memo": "三冠王。秋田最強の野手" },
+      { "name": "山田久志", "year": 1964, "pos": "投", "star": 280, "dlc": false, "memo": "通常版のほうがDLC版より★が高い" },
+      { "name": "山田久志（DLC）", "year": 1964, "pos": "投", "star": 274, "dlc": true, "memo": "通常版より★が6低い。DLC版が常に上位とは限らない例" },
+      { "name": "石井大智", "year": 2013, "pos": "投", "star": 263, "dlc": false, "memo": "" },
+      { "name": "攝津正", "year": 1998, "pos": "投", "star": 257, "dlc": false, "memo": "" },
+      { "name": "石山泰稚", "year": 2004, "pos": "投", "star": 252, "dlc": false, "memo": "" },
+      { "name": "曽谷龍平", "year": 2016, "pos": "投", "star": 244, "dlc": false, "memo": "" },
+      { "name": "石井浩郎", "year": 1980, "pos": "一", "star": 240, "dlc": false, "memo": "" },
+      { "name": "吉田輝星", "year": 2016, "pos": "投", "star": 238, "dlc": false, "memo": "" },
+      { "name": "工藤泰成", "year": 2017, "pos": "投", "star": 230, "dlc": false, "memo": "" },
+      { "name": "後藤光尊", "year": 1994, "pos": "遊", "star": 220, "dlc": false, "memo": "" },
+      { "name": "石川雅規", "year": 1995, "pos": "投", "star": 209, "dlc": false, "memo": "" },
+      { "name": "山口航輝", "year": 2016, "pos": "外", "star": 195, "dlc": false, "memo": "" },
+      { "name": "村田辰美", "year": 1968, "pos": "投", "star": 181, "dlc": false, "memo": "" }
+    ]
   },
   "03": { "slug": "iwate", "name": "岩手県", "region": "東北", "schools": 3, "games": 5, "proTeam": null, "recommend": 5, "note": "投手が粒ぞろいで難易度も低い。1年目に最もおすすめ", "complete": true,
     "ob": [ { "name": "大谷翔平", "year": 2010, "pos": "投/野", "star": 419, "dlc": false, "memo": "二刀流。DLC版は★446だが球種が1つ減る" },
