@@ -26,7 +26,38 @@
       { "name": "成田晴風", "year": 2021, "pos": "投", "star": 170, "dlc": false, "memo": "" },
       { "name": "武岡龍世", "year": 2017, "pos": "遊", "star": 165, "dlc": false, "memo": "" }
     ]
-
+  },
+  "04": {
+    "slug": "miyagi", "name": "宮城県", "region": "東北",
+    "schools": 3, "games": 5, "proTeam": "楽天",
+    "recommend": 3,
+    "note": "参加校数★3・予選5試合で楽天の本拠地。ダルビッシュ有★266（DLC版★342）が圧倒的だが、DLCがないと戦力は大きく落ちる。他には小坂誠★282がいる程度で、全体的に戦力は控えめ",
+    "complete": true,
+    "ob": [
+      { "name": "ダルビッシュ有（DLC）", "year": 2002, "pos": "投", "star": 342, "dlc": true, "memo": "宮城最強。通常版より★76も高い" },
+      { "name": "小坂誠", "year": 1989, "pos": "遊", "star": 282, "dlc": false, "memo": "宮城の野手では最上位" },
+      { "name": "佐々木主浩", "year": 1983, "pos": "投", "star": 267, "dlc": false, "memo": "" },
+      { "name": "ダルビッシュ有", "year": 2002, "pos": "投", "star": 266, "dlc": false, "memo": "DLCなしだと★266に留まる" },
+      { "name": "上林誠知", "year": 2011, "pos": "外", "star": 254, "dlc": false, "memo": "" },
+      { "name": "嶋重宣", "year": 1992, "pos": "外", "star": 242, "dlc": false, "memo": "" },
+      { "name": "雄平", "year": 2000, "pos": "投", "star": 241, "dlc": false, "memo": "" },
+      { "name": "伊藤樹", "year": 2019, "pos": "投", "star": 232, "dlc": false, "memo": "" },
+      { "name": "岸孝之", "year": 2000, "pos": "投", "star": 229, "dlc": false, "memo": "" },
+      { "name": "山口廉王", "year": 2022, "pos": "投", "star": 228, "dlc": false, "memo": "" },
+      { "name": "斎藤隆", "year": 1985, "pos": "投", "star": 227, "dlc": false, "memo": "" },
+      { "name": "麦谷祐介", "year": 2018, "pos": "外", "star": 225, "dlc": false, "memo": "" },
+      { "name": "大内誠弥", "year": 2021, "pos": "投", "star": 225, "dlc": false, "memo": "" },
+      { "name": "郡司裕也", "year": 2013, "pos": "捕", "star": 217, "dlc": false, "memo": "捕手" },
+      { "name": "平沢大河", "year": 2013, "pos": "遊", "star": 212, "dlc": false, "memo": "" },
+      { "name": "佐藤隼輔", "year": 2015, "pos": "投", "star": 208, "dlc": false, "memo": "" },
+      { "name": "秋山俊", "year": 2019, "pos": "外", "star": 195, "dlc": false, "memo": "" },
+      { "name": "今野龍太", "year": 2011, "pos": "投", "star": 191, "dlc": false, "memo": "" },
+      { "name": "杉澤龍", "year": 2016, "pos": "外", "star": 183, "dlc": false, "memo": "" },
+      { "name": "佐藤柳之介", "year": 2018, "pos": "投", "star": 183, "dlc": false, "memo": "" },
+      { "name": "熊谷敬宥", "year": 2011, "pos": "遊", "star": 182, "dlc": false, "memo": "" },
+      { "name": "入江大樹", "year": 2018, "pos": "遊", "star": 182, "dlc": false, "memo": "" },
+      { "name": "山田脩也", "year": 2021, "pos": "遊", "star": 154, "dlc": false, "memo": "" }
+    ]
   },
   "05": {
     "slug": "akita", "name": "秋田県", "region": "東北",
