@@ -1,0 +1,319 @@
+---
+import WikiLayout from '../layouts/WikiLayout.astro';
+import prefecturesData from '../data/prefectures.json';
+
+const frontmatter = {
+  title: '転生OB都道府県マップ',
+};
+
+// 47都道府県のグリッド座標と基本データ
+const mapGrid = [
+  { id: "01", shortName: "北海道", r: 1, c: 14 },
+  { id: "02", shortName: "青森", r: 2, c: 14 },
+  { id: "03", shortName: "岩手", r: 3, c: 14 },
+  { id: "04", shortName: "宮城", r: 4, c: 14 },
+  { id: "05", shortName: "秋田", r: 3, c: 13 },
+  { id: "06", shortName: "山形", r: 4, c: 13 },
+  { id: "07", shortName: "福島", r: 5, c: 14 },
+  { id: "08", shortName: "茨城", r: 6, c: 14 },
+  { id: "09", shortName: "栃木", r: 6, c: 13 },
+  { id: "10", shortName: "群馬", r: 6, c: 12 },
+  { id: "11", shortName: "埼玉", r: 7, c: 13 },
+  { id: "12", shortName: "千葉", r: 7, c: 14 },
+  { id: "13", shortName: "東京", r: 8, c: 13 },
+  { id: "14", shortName: "神奈川", r: 8, c: 12 },
+  { id: "15", shortName: "新潟", r: 5, c: 12 },
+  { id: "16", shortName: "富山", r: 5, c: 11 },
+  { id: "17", shortName: "石川", r: 4, c: 11 },
+  { id: "18", shortName: "福井", r: 5, c: 10 },
+  { id: "19", shortName: "山梨", r: 7, c: 12 },
+  { id: "20", shortName: "長野", r: 6, c: 11 },
+  { id: "21", shortName: "岐阜", r: 6, c: 10 },
+  { id: "22", shortName: "静岡", r: 7, c: 11 },
+  { id: "23", shortName: "愛知", r: 7, c: 10 },
+  { id: "24", shortName: "三重", r: 8, c: 9 },
+  { id: "25", shortName: "滋賀", r: 6, c: 9 },
+  { id: "26", shortName: "京都", r: 5, c: 8 },
+  { id: "27", shortName: "大阪", r: 7, c: 8 },
+  { id: "28", shortName: "兵庫", r: 6, c: 8 },
+  { id: "29", shortName: "奈良", r: 7, c: 9 },
+  { id: "30", shortName: "和歌山", r: 8, c: 8 },
+  { id: "31", shortName: "鳥取", r: 5, c: 7 },
+  { id: "32", shortName: "島根", r: 5, c: 6 },
+  { id: "33", shortName: "岡山", r: 6, c: 7 },
+  { id: "34", shortName: "広島", r: 6, c: 6 },
+  { id: "35", shortName: "山口", r: 6, c: 5 },
+  { id: "36", shortName: "徳島", r: 9, c: 7 },
+  { id: "37", shortName: "香川", r: 8, c: 7 },
+  { id: "38", shortName: "愛媛", r: 8, c: 6 },
+  { id: "39", shortName: "高知", r: 9, c: 6 },
+  { id: "40", shortName: "福岡", r: 7, c: 4 },
+  { id: "41", shortName: "佐賀", r: 8, c: 3 },
+  { id: "42", shortName: "長崎", r: 8, c: 2 },
+  { id: "43", shortName: "熊本", r: 9, c: 3 },
+  { id: "44", shortName: "大分", r: 8, c: 4 },
+  { id: "45", shortName: "宮崎", r: 9, c: 4 },
+  { id: "46", shortName: "鹿児島", r: 10, c: 3 },
+  { id: "47", shortName: "沖縄", r: 12, c: 1 },
+];
+
+const processedGrid = mapGrid.map(pref => {
+  const data = prefecturesData[pref.id];
+  if (data && data.complete) {
+    return { ...pref, ...data, isComplete: true };
+  } else {
+    return { ...pref, slug: `pref-${pref.id}`, name: pref.shortName, isComplete: false };
+  }
+});
+
+const clientDataJson = JSON.stringify(processedGrid);
+---
+
+<WikiLayout frontmatter={frontmatter}>
+  <div class="map-container">
+    <p>都道府県のタイルをクリックすると、詳細情報と転生OBリストが表示されます。</p>
+    <div class="map-grid">
+      {processedGrid.map(pref => (
+        <button 
+          class={`pref-tile ${pref.isComplete ? 'complete' : 'incomplete'}`} 
+          data-slug={pref.slug}
+          data-id={pref.id}
+          style={`grid-row: ${pref.r}; grid-column: ${pref.c}; background-color: ${pref.isComplete ? `rgba(102, 126, 234, ${0.2 + (pref.schools * 0.15)})` : '#e2e8f0'}`}
+          title={pref.isComplete ? `${pref.name} (★${pref.schools})` : `${pref.name} (調査中)`}
+        >
+          {pref.shortName}
+        </button>
+      ))}
+    </div>
+  </div>
+
+  <div id="detail-panel" class="detail-panel hidden">
+    <h2 id="detail-name">県名</h2>
+    <div class="detail-meta">
+      <span class="badge">参加校数: <span id="detail-schools"></span></span>
+      <span class="badge">夏の試合数: <span id="detail-games"></span></span>
+      <span class="badge">プロ球団: <span id="detail-pro"></span></span>
+      <span class="badge">おすすめ度: <span id="detail-rec"></span></span>
+    </div>
+    <p id="detail-note" class="detail-note"></p>
+    
+    <h3>転生OB一覧</h3>
+    <div class="table-container">
+      <table class="ob-table">
+        <thead>
+          <tr>
+            <th>名前</th>
+            <th>年代</th>
+            <th>位置</th>
+            <th>★</th>
+            <th>DLC</th>
+            <th>メモ</th>
+          </tr>
+        </thead>
+        <tbody id="detail-ob-tbody">
+          <!-- JSで動的生成 -->
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <div class="fallback-seo-container">
+    <h2>都道府県データ一覧 (SEO用)</h2>
+    {Object.entries(prefecturesData).map(([id, pref]) => {
+      if (!pref.complete) return null;
+      return (
+        <div class="fallback-pref" id={pref.slug}>
+          <h3>{pref.name}</h3>
+          <p>参加校数: {pref.schools} / 試合数: {pref.games} / おすすめ度: {pref.recommend}</p>
+          <p>{pref.note}</p>
+          <table>
+            <thead>
+              <tr>
+                <th>名前</th>
+                <th>年代</th>
+                <th>位置</th>
+                <th>★</th>
+              </tr>
+            </thead>
+            <tbody>
+              {pref.ob.map(ob => (
+                <tr>
+                  <td>{ob.name}</td>
+                  <td>{ob.year || '-'}</td>
+                  <td>{ob.pos}</td>
+                  <td>{ob.star || '-'}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      );
+    })}
+  </div>
+</WikiLayout>
+
+<style>
+  .map-container {
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .map-grid {
+    display: grid;
+    grid-template-columns: repeat(14, minmax(30px, 1fr));
+    grid-template-rows: repeat(12, minmax(30px, 1fr));
+    gap: 4px;
+    min-width: 500px;
+    background: #f8fafc;
+    padding: 12px;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+  }
+  .pref-tile {
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    font-size: 0.75rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.1s, box-shadow 0.1s;
+    min-height: 36px;
+    color: #1e293b;
+    font-weight: 500;
+  }
+  .pref-tile:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  }
+  .pref-tile.incomplete {
+    color: #94a3b8;
+    cursor: not-allowed;
+  }
+  .pref-tile.active {
+    border: 2px solid #ef4444;
+    box-shadow: 0 0 0 2px rgba(239, 68, 68, 0.2);
+  }
+  
+  .detail-panel {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 24px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  }
+  .detail-panel.hidden {
+    display: none;
+  }
+  .detail-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .badge {
+    background: #f1f5f9;
+    padding: 4px 12px;
+    border-radius: 9999px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #475569;
+  }
+  .detail-note {
+    background: #fdf2f8;
+    border-left: 4px solid #db2777;
+    padding: 12px;
+    margin-bottom: 20px;
+    color: #831843;
+    font-size: 0.95rem;
+  }
+  .table-container {
+    overflow-x: auto;
+  }
+  .ob-table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  .ob-table th, .ob-table td {
+    border: 1px solid #e2e8f0;
+    padding: 8px 12px;
+    text-align: left;
+    font-size: 0.9rem;
+  }
+  .ob-table th {
+    background-color: #f8fafc;
+  }
+  
+  .fallback-seo-container {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px dashed #cbd5e1;
+  }
+  /* モバイルなどでは表を見えなくしても良いが、Pagefind用にはそのまま置く */
+</style>
+
+<script is:inline define:vars={{ prefData: clientDataJson }}>
+  document.addEventListener('DOMContentLoaded', () => {
+    const data = JSON.parse(prefData);
+    const tiles = document.querySelectorAll('.pref-tile');
+    const panel = document.getElementById('detail-panel');
+    const tb = document.getElementById('detail-ob-tbody');
+    
+    function renderDetail(slug) {
+      const pref = data.find(p => p.slug === slug);
+      if (!pref || !pref.isComplete) return;
+      
+      // Update UI
+      tiles.forEach(t => t.classList.remove('active'));
+      const activeTile = document.querySelector(`.pref-tile[data-slug="${slug}"]`);
+      if(activeTile) activeTile.classList.add('active');
+      
+      document.getElementById('detail-name').textContent = pref.name;
+      document.getElementById('detail-schools').textContent = '★' + pref.schools;
+      document.getElementById('detail-games').textContent = pref.games;
+      document.getElementById('detail-pro').textContent = pref.proTeam || 'なし';
+      document.getElementById('detail-rec').textContent = '★' + pref.recommend;
+      document.getElementById('detail-note').textContent = pref.note || '';
+      
+      // Render table
+      tb.innerHTML = '';
+      if(pref.ob && pref.ob.length > 0) {
+        pref.ob.forEach(ob => {
+          const tr = document.createElement('tr');
+          tr.innerHTML = `
+            <td>${ob.name}</td>
+            <td>${ob.year || '-'}</td>
+            <td>${ob.pos}</td>
+            <td>${ob.star || '-'}</td>
+            <td>${ob.dlc ? '〇' : '-'}</td>
+            <td>${ob.memo || ''}</td>
+          `;
+          tb.appendChild(tr);
+        });
+      } else {
+        tb.innerHTML = '<tr><td colspan="6">データがありません</td></tr>';
+      }
+      
+      panel.classList.remove('hidden');
+      
+      // Update URL
+      if(window.location.hash !== '#' + slug) {
+        history.replaceState(null, null, '#' + slug);
+      }
+    }
+
+    // Click handler
+    tiles.forEach(tile => {
+      tile.addEventListener('click', (e) => {
+        const slug = e.currentTarget.getAttribute('data-slug');
+        renderDetail(slug);
+      });
+    });
+
+    // Check hash on load
+    if (window.location.hash) {
+      const slug = window.location.hash.substring(1);
+      renderDetail(slug);
+    }
+  });
+</script>
