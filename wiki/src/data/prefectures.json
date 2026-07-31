@@ -653,7 +653,7 @@
       { "name": "尾田剛樹", "year": 2016, "pos": "外", "star": 134, "dlc": false, "memo": "" }
     ]
   },
-  "31": { "slug": "tottori", "name": "鳥取県", "region": "中国", "schools": 1, "games": 5, "proTeam": null, "recommend": 4, "note": "転生OBが全員投手という珍しい県。参加校数★1で3年モード最有力", "complete": true,
+  "31": { "slug": "tottori", "name": "鳥取県", "region": "中国", "schools": 1, "games": 5, "proTeam": null, "recommend": 4, "note": "転生OB6人が全員投手という珍しい県。参加校数★1で3年モード最有力", "complete": true,
     "ob": [ { "name": "米田哲也", "year": 1953, "pos": "投", "star": 281, "dlc": true, "memo": "鳥取の転生OBの中で最も出やすい" } ] },
   "32": {
     "slug": "shimane", "name": "島根県", "region": "中国",
@@ -881,6 +881,37 @@
       { "name": "森岡良介", "year": 2000, "pos": "遊", "star": 157, "dlc": false, "memo": "" },
       { "name": "藤森海斗", "year": 2023, "pos": "捕", "star": 134, "dlc": false, "memo": "捕手" },
       { "name": "川田悠慎", "year": 2017, "pos": "外", "star": 103, "dlc": false, "memo": "" }
+    ]
+  },
+  "44": {
+    "slug": "oita", "name": "大分県", "region": "九州",
+    "schools": 2, "games": 5, "proTeam": null,
+    "recommend": 5,
+    "note": "参加校数★2・予選5試合と難易度が低いのに、稲尾和久★366・城島健司（DLC）★324・野村謙二郎★311と★300超が3人。エース・正捕手・遊撃手が一通り揃う構成で、岩手・広島と並ぶ最有力候補",
+    "complete": true,
+    "ob": [
+      { "name": "稲尾和久", "year": 1953, "pos": "投", "star": 366, "dlc": false, "memo": "大分最強。DLC不要で引ける屈指のエース" },
+      { "name": "城島健司（DLC）", "year": 1992, "pos": "捕", "star": 324, "dlc": true, "memo": "通常版より★87高い。DLC差は全県でも最大級" },
+      { "name": "野村謙二郎", "year": 1982, "pos": "二", "star": 311, "dlc": false, "memo": "" },
+      { "name": "内川聖一", "year": 1998, "pos": "一", "star": 292, "dlc": false, "memo": "" },
+      { "name": "源田壮亮（DLC）", "year": 2008, "pos": "遊", "star": 282, "dlc": true, "memo": "守備・走力に優れる" },
+      { "name": "源田壮亮", "year": 2008, "pos": "遊", "star": 271, "dlc": false, "memo": "" },
+      { "name": "大島康徳", "year": 1966, "pos": "外", "star": 266, "dlc": false, "memo": "" },
+      { "name": "鉄平", "year": 1998, "pos": "外", "star": 260, "dlc": false, "memo": "" },
+      { "name": "森下暢仁", "year": 2013, "pos": "投", "star": 253, "dlc": false, "memo": "現役世代の投手最上位" },
+      { "name": "梶原昂希", "year": 2015, "pos": "外", "star": 248, "dlc": false, "memo": "" },
+      { "name": "高橋直樹", "year": 1960, "pos": "投", "star": 244, "dlc": false, "memo": "" },
+      { "name": "城島健司", "year": 1992, "pos": "捕", "star": 237, "dlc": false, "memo": "捕手。DLC版との差が87と極端" },
+      { "name": "田中瑛斗", "year": 2015, "pos": "投", "star": 230, "dlc": false, "memo": "" },
+      { "name": "今宮健太", "year": 2007, "pos": "遊", "star": 227, "dlc": false, "memo": "" },
+      { "name": "甲斐拓也", "year": 2008, "pos": "捕", "star": 222, "dlc": false, "memo": "捕手" },
+      { "name": "川瀬晃", "year": 2013, "pos": "遊", "star": 218, "dlc": false, "memo": "" },
+      { "name": "川瀬堅斗", "year": 2018, "pos": "投", "star": 209, "dlc": false, "memo": "" },
+      { "name": "常廣羽也斗", "year": 2017, "pos": "投", "star": 198, "dlc": false, "memo": "" },
+      { "name": "安藤優也", "year": 1993, "pos": "投", "star": 193, "dlc": false, "memo": "" },
+      { "name": "狩生聖真", "year": 2022, "pos": "投", "star": 189, "dlc": false, "memo": "" },
+      { "name": "濱田太貴", "year": 2016, "pos": "外", "star": 167, "dlc": false, "memo": "" },
+      { "name": "古川雄大", "year": 2020, "pos": "外", "star": 164, "dlc": false, "memo": "" }
     ]
   },
   "45": { "slug": "miyazaki", "name": "宮崎県", "region": "九州", "schools": 2, "games": 5, "proTeam": null, "recommend": 4, "note": "強力な投手が揃い参加校数★2で難易度が低い。序盤に強いチームを作りやすい", "complete": true,
