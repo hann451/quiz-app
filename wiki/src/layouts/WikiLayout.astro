@@ -124,7 +124,24 @@ const { frontmatter } = Astro.props;
 				<div id="search" style="margin-bottom: 20px;"></div>
 				<script is:inline>
 					window.addEventListener('DOMContentLoaded', (event) => {
-						new PagefindUI({ element: "#search", showSubResults: true, baseUrl: "/wiki/" });
+						new PagefindUI({ 
+							element: "#search", 
+							showSubResults: true, 
+							bundlePath: "/wiki/pagefind/",
+							processResult: function(result) {
+								if (result.url && !result.url.startsWith("/wiki")) {
+									result.url = "/wiki" + result.url;
+								}
+								if (result.sub_results) {
+									result.sub_results.forEach(function(s) {
+										if (s.url && !s.url.startsWith("/wiki")) {
+											s.url = "/wiki" + s.url;
+										}
+									});
+								}
+								return result;
+							}
+						});
 					});
 				</script>
 				<slot />
