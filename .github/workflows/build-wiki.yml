@@ -1,0 +1,53 @@
+name: Build and Deploy Wiki
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'wiki/src/**'
+      - 'wiki/package.json'
+      - 'wiki/package-lock.json'
+      - 'wiki/astro.config.*'
+      - '!wiki/dist/**'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    
+    defaults:
+      run:
+        working-directory: wiki
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '24'
+          cache: 'npm'
+          cache-dependency-path: 'wiki/package-lock.json'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Astro and generate Pagefind index
+        run: npm run build
+
+      - name: Commit and push changes
+        run: |
+          git config --global user.name "github-actions[bot]"
+          git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          git add dist
+          if ! git diff --cached --quiet; then
+            git commit -m "build: wiki dist [skip ci]"
+            git push origin HEAD:main
+          else
+            echo "No changes to commit"
+          fi

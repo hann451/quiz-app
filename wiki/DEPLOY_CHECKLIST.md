@@ -1,9 +1,16 @@
 # デプロイ後 手動確認チェックリスト
 
 ## デプロイ手順（2026-07 確立）
-1. 変更はすべてWindows（C:\Users\miyamoto\quiz-app）で行う。Piでは編集しない
-2. `.\deploy-wiki.ps1` を実行（ビルド→commit→push）
-3. Piのsystemdタイマー wiki-deploy.timer が3分以内に自動pull
+1. 変更したMarkdownファイル（`wiki/src/**/*.md` 等）を main ブランチへプッシュする。
+   （GitHubのWeb画面、スマートフォン、ローカルのどれからでも可）
+2. GitHub Actions (`Build and Deploy Wiki`) が自動でビルドし、`dist/` をプッシュする。
+3. Pi側の systemdタイマー（`wiki-deploy.timer`）が3分以内に自動pullし、反映される。
+
+> [!WARNING]
+> **Windows (ローカル) から手動でデプロイする場合の注意**
+> `.\deploy-wiki.ps1` を実行する前に、**必ず `git pull` を行ってください**。
+> （GitHub Actions が自動で積んだ `dist/` のコミットを手元に取り込んでおかないと、Push時に競合エラーになります）
+
 4. **wiki配下の変更のみ自動反映。app.py 等のPythonコードを変更した場合は
    `sudo systemctl restart flask-app.service` を手動実行すること**
 5. 確認は必ずシークレットウィンドウで行う（ブラウザキャッシュ対策）
